@@ -62,7 +62,7 @@
             this.loginScreen1.Location = new System.Drawing.Point(0, 0);
             this.loginScreen1.Name = "loginScreen1";
             this.loginScreen1.Size = new System.Drawing.Size(1000, 555);
-            this.loginScreen1.TabIndex = 6;
+            this.loginScreen1.TabIndex = 0;
             this.loginScreen1.Load += new System.EventHandler(this.loginScreen1_Load);
             // 
             // gameScreen1
