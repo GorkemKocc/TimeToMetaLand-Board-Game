@@ -25,12 +25,10 @@ namespace MyTimeAtMetaland
         public GameScreen()
         {
             InitializeComponent();
-            //gameSizeX = 4;
-            //gameSizeY = 3;
+
             connection.Open();
-            query = new NpgsqlCommand("Select name, surname from users;", connection);
+            query = new NpgsqlCommand("Select name, surname from users ORDER BY user_id ;", connection);
             reader = query.ExecuteReader();
-            //connection.Close();
             show_player();
         }
 
@@ -42,26 +40,33 @@ namespace MyTimeAtMetaland
 
         public void show_player()
         {
-            reader.Read();
-            string name = reader.GetString(0);
-            string surname = reader.GetString(1);
-            query.CommandText = "Select food_quantity from users where id=57;";
-            query = new NpgsqlCommand("Select food_quantity from users where id=57;", connection);
-            query.ExecuteNonQuery();
-            var foodQuantity = query.ExecuteScalar();
 
-            query.CommandText = "Select item_quantity from users where id=57;";
-            query.ExecuteNonQuery();
-            var itemQuantity = query.ExecuteScalar();
+            if (reader.Read())
+            {
+                string name = reader.GetString(0);
+                string surname = reader.GetString(1);
+                connection.Close();
+                connection.Open();
 
-            query.CommandText = "Select money_quantity from users where id=57;";
-            query.ExecuteNonQuery();
-            var moneyQuantity = query.ExecuteScalar();
+                query.CommandText = "Select food_quantity from users where id=1;";
+                query = new NpgsqlCommand("Select food_quantity from users where user_id=1;", connection);
+                query.ExecuteNonQuery();
+                var foodQuantity = query.ExecuteScalar();
 
-            label1.Text = name + " " + surname;
-            label2.Text = moneyQuantity.ToString();
-            label3.Text = itemQuantity.ToString();
-            label4.Text = foodQuantity.ToString();
+                query.CommandText = "Select item_quantity from users where user_id=1;";
+                query.ExecuteNonQuery();
+                var itemQuantity = query.ExecuteScalar();
+
+                query.CommandText = "Select money_quantity from users where user_id=1;";
+                query.ExecuteNonQuery();
+                var moneyQuantity = query.ExecuteScalar();
+
+                label1.Text = name + " " + surname;
+                label2.Text = moneyQuantity.ToString();
+                label3.Text = itemQuantity.ToString();
+                label4.Text = foodQuantity.ToString();
+            }
+
         }
 
         private void button1_Click(object sender, EventArgs e)

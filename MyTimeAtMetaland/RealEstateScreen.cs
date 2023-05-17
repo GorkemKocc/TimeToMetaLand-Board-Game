@@ -12,7 +12,7 @@ namespace MyTimeAtMetaland
 {
     public partial class RealEstateScreen : UserControl
     {
-        public UserControl gameScreen;
+        public GameScreen gameScreen;
         internal Game game;
         public List<System.Windows.Forms.Button> land;
         int amount = 0;

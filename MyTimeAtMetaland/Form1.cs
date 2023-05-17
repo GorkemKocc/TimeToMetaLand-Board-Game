@@ -6,16 +6,15 @@ namespace MyTimeAtMetaland
         {
             InitializeComponent();
         }
-        private void gameScreen1_Load(object sender, EventArgs e)
-        {
 
-        }
         private void Form1_Load(object sender, EventArgs e)
         {
             loginScreen1.Visible = false;
-            gameScreen1.Visible = true;
-            shopScreen1.Visible = false;
+            gameScreen1.Visible = false;
+            shopScreen1.Visible = true;
             marketScreen1.Visible = false;
+
+
 
             Game game = new Game();
 
@@ -32,10 +31,6 @@ namespace MyTimeAtMetaland
             realEstateScreen1.land = game.land;
             realEstateScreen1.game = game;
 
-
-
-
-
             realEstateScreen1.Visible = false;
             realEstateScreen1.drawMap();
             shopScreen1.gameScreen = gameScreen1;
@@ -45,6 +40,11 @@ namespace MyTimeAtMetaland
 
 
         private void marketScreen1_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void loginScreen1_Load(object sender, EventArgs e)
         {
 
         }

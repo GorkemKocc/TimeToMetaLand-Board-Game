@@ -9,9 +9,12 @@ using Npgsql;
 
 namespace MyTimeAtMetaland
 {
-    internal class Game
+    public class Game
     {
-        public UserControl gameScreen, shopScreen, marketScreen, realEstateScreen;
+        public GameScreen gameScreen;
+        public ShopScreen shopScreen;
+        public MarketScreen marketScreen;
+        public RealEstateScreen realEstateScreen;
         public Panel panel;
         public List<Button> land = new List<Button>();
         public int gameSizeX, gameSizeY;
@@ -20,6 +23,7 @@ namespace MyTimeAtMetaland
         {
             gameSizeX = 10;
             gameSizeY = 15;
+
         }
         public void createMap()
         {
@@ -41,15 +45,18 @@ namespace MyTimeAtMetaland
             }
             panel.Location = new Point(land[gameSizeX - 1].Location.X + land[gameSizeX - 1].Size.Width + 20, 0);
 
+
         }
 
         public void updateMap()
         {
 
+
             for (int i = 0; i < land.Count; i++)
             {
                 land[i].BackColor = Color.Green;
             }
+
 
         }
         private void plot_Click(object sender, EventArgs e)
@@ -57,7 +64,7 @@ namespace MyTimeAtMetaland
             // Tıklanan butonun text özelliğini al
             Button button = sender as Button;
             string buttonText = button.Text;
-            //shopScreen.Visible = true;
+            //shopScreen.Visible = true;          
             marketScreen.Visible = true;
             gameScreen.Visible = false;
             // gameScreen.show_player();

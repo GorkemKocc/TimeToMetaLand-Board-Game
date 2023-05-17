@@ -12,10 +12,11 @@ namespace MyTimeAtMetaland
 {
     public partial class ShopScreen : UserControl
     {
-        public UserControl gameScreen;
+        //public UserControl gameScreen;
         int amount = 0;
         int price = 0;
-
+        public GameScreen gameScreen;
+        public Game game;
         public ShopScreen()
         {
             InitializeComponent();
@@ -36,6 +37,7 @@ namespace MyTimeAtMetaland
 
         private void button1_Click(object sender, EventArgs e)
         {
+
             MessageBox.Show("alındı");
         }
 
