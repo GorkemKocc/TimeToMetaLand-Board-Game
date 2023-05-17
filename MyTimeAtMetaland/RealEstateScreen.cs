@@ -12,7 +12,7 @@ namespace MyTimeAtMetaland
 {
     public partial class RealEstateScreen : UserControl
     {
-        public UserControl gameScreen;
+        public GameScreen gameScreen;
         internal Game game;
         public List<System.Windows.Forms.Button> land;
         int amount = 0;
@@ -67,6 +67,12 @@ namespace MyTimeAtMetaland
         private void panel1_Paint(object sender, PaintEventArgs e)
         {
 
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.Visible = false;
+            gameScreen.Visible = true;
         }
     }
 }

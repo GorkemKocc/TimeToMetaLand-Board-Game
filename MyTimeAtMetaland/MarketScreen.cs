@@ -29,7 +29,7 @@ namespace MyTimeAtMetaland
             }
             comboBox1.SelectedIndex = 0;
 
-            
+
         }
 
         private void Market_Load(object sender, EventArgs e)
@@ -44,24 +44,24 @@ namespace MyTimeAtMetaland
             this.Visible = false;
             game.updateMap();
             gameScreen.Visible = true;
-           
+
 
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
             //buy
-             
-            
-             string sqlQuery = "UPDATE users SET money_quantity = money_quantity - @Price";
-             string sqlQuery2 = "UPDATE users SET food_quantity = food_quantity + @Amount";
 
-             baglanti.Open();
-             NpgsqlCommand komut = new NpgsqlCommand(sqlQuery, baglanti);
-             NpgsqlCommand komut2 = new NpgsqlCommand(sqlQuery2, baglanti);
-             komut.Parameters.AddWithValue("@Price", price);
-             komut2.Parameters.AddWithValue("@Amount", amount);
- 
+
+            string sqlQuery = "UPDATE users SET money_quantity = money_quantity - @Price";
+            string sqlQuery2 = "UPDATE users SET food_quantity = food_quantity + @Amount";
+
+            baglanti.Open();
+            NpgsqlCommand komut = new NpgsqlCommand(sqlQuery, baglanti);
+            NpgsqlCommand komut2 = new NpgsqlCommand(sqlQuery2, baglanti);
+            komut.Parameters.AddWithValue("@Price", price);
+            komut2.Parameters.AddWithValue("@Amount", amount);
+
 
             komut.ExecuteNonQuery();
             komut2.ExecuteNonQuery();
@@ -69,29 +69,29 @@ namespace MyTimeAtMetaland
 
 
             MessageBox.Show("alındı");
-            
+
             game.updatePlayer();
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             amount = comboBox1.SelectedIndex;
-            
-            string sqlQuery = "SELECT shop_item_price FROM shop WHERE shop_id = 1"; // İlgili tablo ve koşulları burada belirtin.
-            baglanti.Open();
-            using (NpgsqlCommand command = new NpgsqlCommand(sqlQuery, baglanti))
-            {
-                using (NpgsqlDataReader reader = command.ExecuteReader())
-                {
-                    if (reader.Read())
+            /*            
+                    string sqlQuery = "SELECT shop_item_price FROM shop WHERE shop_field_id = 1"; // İlgili tablo ve koşulları burada belirtin.
+                    baglanti.Open();
+                    using (NpgsqlCommand command = new NpgsqlCommand(sqlQuery, baglanti))
                     {
-                        price = reader.GetInt32(0); 
+                        using (NpgsqlDataReader reader = command.ExecuteReader())
+                        {
+                            if (reader.Read())
+                            {
+                                price = reader.GetInt32(0); 
+                            }
+                        }
                     }
-                }
-            }
-            baglanti.Close();
-            textBox1.Text = (amount*price).ToString() + "$";
-
+                    baglanti.Close();
+                    textBox1.Text = (amount*price).ToString() + "$";
+            */
         }
     }
-} 
+}

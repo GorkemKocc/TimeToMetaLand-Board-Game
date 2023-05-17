@@ -34,6 +34,7 @@ namespace MyTimeAtMetaland
 
             shopScreen1.game = game;
 
+            realEstateScreen1.gameScreen = gameScreen1;
 
 
             realEstateScreen1.Visible = false;
