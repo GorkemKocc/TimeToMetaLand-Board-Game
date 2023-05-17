@@ -19,7 +19,7 @@ namespace MyTimeAtMetaland
          public List<Button> land = new List<Button>();
          public int gameSizeX, gameSizeY;*/
         NpgsqlConnection connection = new NpgsqlConnection("server=localHost; port=5432; Database=MetaLand; user Id=postgres;" +
-            "password=admin ");
+            "password=bunuunutmalütfen21 ");
         NpgsqlDataReader reader;
         NpgsqlCommand query;
         public GameScreen()
@@ -27,10 +27,10 @@ namespace MyTimeAtMetaland
             InitializeComponent();
             //gameSizeX = 4;
             //gameSizeY = 3;
-            connection.Open();
-            query = new NpgsqlCommand("Select name, surname from users;", connection);
-            reader = query.ExecuteReader();
-            //connection.Close();
+            /* connection.Open();
+             query = new NpgsqlCommand("Select name, surname from users;", connection);
+             reader = query.ExecuteReader();
+             //connection.Close(); */
             show_player();
         }
 
@@ -42,9 +42,17 @@ namespace MyTimeAtMetaland
 
         public void show_player()
         {
+            connection.Open();
+            query = new NpgsqlCommand("Select name, surname from users;", connection);
+            reader = query.ExecuteReader();
+            //connection.Close();
+
             reader.Read();
             string name = reader.GetString(0);
             string surname = reader.GetString(1);
+            connection.Close();
+            connection.Open();
+            query = new NpgsqlCommand();
             query.CommandText = "Select food_quantity from users where id=57;";
             query = new NpgsqlCommand("Select food_quantity from users where id=57;", connection);
             query.ExecuteNonQuery();
@@ -62,11 +70,13 @@ namespace MyTimeAtMetaland
             label2.Text = moneyQuantity.ToString();
             label3.Text = itemQuantity.ToString();
             label4.Text = foodQuantity.ToString();
+            connection.Close();
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
             show_player();
+
         }
     }
 }

@@ -29,116 +29,124 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ShopScreen));
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            this.SuspendLayout();
+            pictureBox1 = new PictureBox();
+            comboBox1 = new ComboBox();
+            button1 = new Button();
+            button2 = new Button();
+            label1 = new Label();
+            textBox1 = new TextBox();
+            textBox2 = new TextBox();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            SuspendLayout();
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(0, 0);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(987, 555);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
+            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
+            pictureBox1.Location = new Point(0, 0);
+            pictureBox1.Margin = new Padding(4, 4, 4, 4);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(987, 555);
+            pictureBox1.SizeMode = PictureBoxSizeMode.AutoSize;
+            pictureBox1.TabIndex = 0;
+            pictureBox1.TabStop = false;
             // 
             // comboBox1
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(655, 413);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(205, 28);
-            this.comboBox1.TabIndex = 2;
-            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            comboBox1.FormattingEnabled = true;
+            comboBox1.Location = new Point(819, 516);
+            comboBox1.Margin = new Padding(4, 4, 4, 4);
+            comboBox1.Name = "comboBox1";
+            comboBox1.Size = new Size(255, 33);
+            comboBox1.TabIndex = 2;
+            comboBox1.SelectedIndexChanged += comboBox1_SelectedIndexChanged;
             // 
             // button1
             // 
-            this.button1.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.button1.ForeColor = System.Drawing.Color.Green;
-            this.button1.Location = new System.Drawing.Point(670, 463);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(141, 66);
-            this.button1.TabIndex = 3;
-            this.button1.Text = "Satın Al";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            button1.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold, GraphicsUnit.Point);
+            button1.ForeColor = Color.Green;
+            button1.Location = new Point(838, 579);
+            button1.Margin = new Padding(4, 4, 4, 4);
+            button1.Name = "button1";
+            button1.Size = new Size(176, 82);
+            button1.TabIndex = 3;
+            button1.Text = "Satın Al";
+            button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click;
             // 
             // button2
             // 
-            this.button2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.button2.Location = new System.Drawing.Point(901, 7);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(79, 48);
-            this.button2.TabIndex = 4;
-            this.button2.Text = "Çıkış";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            button2.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            button2.Location = new Point(1126, 9);
+            button2.Margin = new Padding(4, 4, 4, 4);
+            button2.Name = "button2";
+            button2.Size = new Size(99, 60);
+            button2.TabIndex = 4;
+            button2.Text = "Çıkış";
+            button2.UseVisualStyleBackColor = true;
+            button2.Click += button2_Click;
             // 
             // label1
             // 
-            this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.Color.DarkGray;
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label1.Location = new System.Drawing.Point(870, 453);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(57, 28);
-            this.label1.TabIndex = 6;
-            this.label1.Text = "Tutar";
+            label1.AutoSize = true;
+            label1.BackColor = Color.DarkGray;
+            label1.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            label1.ForeColor = SystemColors.ActiveCaptionText;
+            label1.Location = new Point(1088, 566);
+            label1.Margin = new Padding(4, 0, 4, 0);
+            label1.Name = "label1";
+            label1.Size = new Size(69, 32);
+            label1.TabIndex = 6;
+            label1.Text = "Tutar";
             // 
             // textBox1
             // 
-            this.textBox1.BackColor = System.Drawing.Color.White;
-            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox1.Font = new System.Drawing.Font("Yu Gothic UI", 16.2F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
-            this.textBox1.Location = new System.Drawing.Point(64, 17);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.ReadOnly = true;
-            this.textBox1.Size = new System.Drawing.Size(253, 186);
-            this.textBox1.TabIndex = 7;
-            this.textBox1.Text = "\r\nMağazaya Hoşgeldiniz";
-            this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            textBox1.BackColor = Color.White;
+            textBox1.BorderStyle = BorderStyle.None;
+            textBox1.Font = new Font("Yu Gothic UI", 16.2F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point);
+            textBox1.Location = new Point(80, 21);
+            textBox1.Margin = new Padding(4, 4, 4, 4);
+            textBox1.Multiline = true;
+            textBox1.Name = "textBox1";
+            textBox1.ReadOnly = true;
+            textBox1.Size = new Size(316, 232);
+            textBox1.TabIndex = 7;
+            textBox1.Text = "\r\nMağazaya Hoşgeldiniz";
+            textBox1.TextAlign = HorizontalAlignment.Center;
             // 
             // textBox2
             // 
-            this.textBox2.BackColor = System.Drawing.Color.White;
-            this.textBox2.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox2.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.textBox2.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.textBox2.Location = new System.Drawing.Point(849, 487);
-            this.textBox2.Multiline = true;
-            this.textBox2.Name = "textBox2";
-            this.textBox2.ReadOnly = true;
-            this.textBox2.Size = new System.Drawing.Size(98, 42);
-            this.textBox2.TabIndex = 8;
-            this.textBox2.Text = "55$";
-            this.textBox2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            textBox2.BackColor = Color.White;
+            textBox2.BorderStyle = BorderStyle.None;
+            textBox2.Font = new Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
+            textBox2.ForeColor = SystemColors.ActiveCaptionText;
+            textBox2.Location = new Point(1061, 609);
+            textBox2.Margin = new Padding(4, 4, 4, 4);
+            textBox2.Multiline = true;
+            textBox2.Name = "textBox2";
+            textBox2.ReadOnly = true;
+            textBox2.Size = new Size(122, 52);
+            textBox2.TabIndex = 8;
+            textBox2.Text = "55$";
+            textBox2.TextAlign = HorizontalAlignment.Center;
             // 
             // ShopScreen
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.comboBox1);
-            this.Controls.Add(this.pictureBox1);
-            this.Name = "ShopScreen";
-            this.Size = new System.Drawing.Size(987, 557);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            this.ResumeLayout(false);
-            this.PerformLayout();
-
+            AutoScaleDimensions = new SizeF(10F, 25F);
+            AutoScaleMode = AutoScaleMode.Font;
+            Controls.Add(textBox2);
+            Controls.Add(textBox1);
+            Controls.Add(label1);
+            Controls.Add(button2);
+            Controls.Add(button1);
+            Controls.Add(comboBox1);
+            Controls.Add(pictureBox1);
+            Margin = new Padding(4, 4, 4, 4);
+            Name = "ShopScreen";
+            Size = new Size(1234, 696);
+            Load += ShopScreen_Load;
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion

@@ -32,7 +32,7 @@ namespace MyTimeAtMetaland
             realEstateScreen1.land = game.land;
             realEstateScreen1.game = game;
 
-
+            shopScreen1.game = game;
 
 
 
