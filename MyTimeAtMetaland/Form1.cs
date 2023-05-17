@@ -49,10 +49,5 @@ namespace MyTimeAtMetaland
         {
 
         }
-
-        private void loginScreen1_Load(object sender, EventArgs e)
-        {
-
-        }
     }
 }
