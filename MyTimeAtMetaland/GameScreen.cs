@@ -4,11 +4,13 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml.Linq;
 using Npgsql;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.Rebar;
+
 
 namespace MyTimeAtMetaland
 {
@@ -22,61 +24,104 @@ namespace MyTimeAtMetaland
             "password=admin ");
         NpgsqlDataReader reader;
         NpgsqlCommand query;
+        public List<Tuple<string, string, int>> users;
+        public List<Tuple<string, string, int>> newUsers;
         public GameScreen()
         {
             InitializeComponent();
-            //gameSizeX = 4;
-            //gameSizeY = 3;
-            /* connection.Open();
-             query = new NpgsqlCommand("Select name, surname from users;", connection);
-             reader = query.ExecuteReader();
-             //connection.Close(); */
-            show_player();
+
+
         }
 
 
         private void GameScreen_Load(object sender, EventArgs e)
         {
             panel = panel1 as Panel;
+            users = ReadData();
+            newUsers = ReadData();
+            //newUsers.Insert(0, null);
+            show_player();
         }
 
         public void show_player()
         {
-            connection.Open();
-            query = new NpgsqlCommand("Select name, surname from users where user_id = 2;", connection);
-            reader = query.ExecuteReader();
-            //connection.Close();
+            if (users.Count > 0)
+            {
+                label1.Text = users[0].Item1 + " " + users[0].Item2;
+                connection.Open();
+                query = new NpgsqlCommand("Select name, surname from users where user_id = " + Convert.ToString(users[0].Item3) + ";", connection);
+                reader = query.ExecuteReader();
+                reader.Read();
+                string name = reader.GetString(0);
+                string surname = reader.GetString(1);
+                connection.Close();
 
-            reader.Read();
-            string name = reader.GetString(0);
-            string surname = reader.GetString(1);
-            connection.Close();
-            connection.Open();
-            query = new NpgsqlCommand();
-            query.CommandText = "Select food_quantity from users where user_id=2;";
-            query = new NpgsqlCommand("Select food_quantity from users where user_id=2;", connection);
-            query.ExecuteNonQuery();
-            var foodQuantity = query.ExecuteScalar();
 
-            query.CommandText = "Select item_quantity from users where user_id=2;";
-            query.ExecuteNonQuery();
-            var itemQuantity = query.ExecuteScalar();
+                connection.Open();
+                query = new NpgsqlCommand("Select food_quantity from users where user_id=" + Convert.ToString(users[0].Item3) + ";", connection);
+                query.ExecuteNonQuery();
+                var foodQuantity = query.ExecuteScalar();
 
-            query.CommandText = "Select money_quantity from users where user_id=2;";
-            query.ExecuteNonQuery();
-            var moneyQuantity = query.ExecuteScalar();
+                query.CommandText = "Select item_quantity from users where user_id=" + Convert.ToString(users[0].Item3) + ";";
+                query.ExecuteNonQuery();
+                var itemQuantity = query.ExecuteScalar();
 
-            label1.Text = name + " " + surname;
-            label2.Text = moneyQuantity.ToString();
-            label3.Text = itemQuantity.ToString();
-            label4.Text = foodQuantity.ToString();
-            connection.Close();
+                query.CommandText = "Select money_quantity from users where user_id=" + Convert.ToString(users[0].Item3) + ";";
+                query.ExecuteNonQuery();
+                var moneyQuantity = query.ExecuteScalar();
+
+                label2.Text = moneyQuantity.ToString();
+                label3.Text = itemQuantity.ToString();
+                label4.Text = foodQuantity.ToString();
+                connection.Close();
+                users.RemoveAt(0);
+            }
+            else
+            {
+                users = ReadData();
+                newUsers = ReadData();
+                show_player();
+            }
+        }
+
+
+        public List<Tuple<string, string, int>> ReadData()
+        {
+            List<Tuple<string, string, int>> usersData = new List<Tuple<string, string, int>>();
+
+
+            using (NpgsqlConnection connection = new NpgsqlConnection("server=localHost; port=5432; Database=MetaLand; user Id=postgres;password=admin "))
+            {
+                connection.Open();
+
+                string query = "SELECT column_name FROM table_name";
+                using (NpgsqlCommand command = new NpgsqlCommand("Select name, surname, user_id from users order by user_id OFFSET 1", connection))
+                {
+                    using (NpgsqlDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            string name = reader.GetString(0);
+                            string surname = reader.GetString(1);
+                            int id = reader.GetInt32(2);
+                            Tuple<string, string, int> tuple = new Tuple<string, string, int>(name, surname, id);
+                            usersData.Add(tuple);
+                        }
+                    }
+                }
+
+                connection.Close();
+            }
+
+            return usersData;
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            show_player();
 
+            if (newUsers.Count != 1)
+                newUsers.RemoveAt(0);
+            show_player();
         }
     }
 }

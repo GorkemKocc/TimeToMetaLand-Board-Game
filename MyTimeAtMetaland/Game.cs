@@ -29,22 +29,23 @@ namespace MyTimeAtMetaland
         public Game()
         {
             gameSizeX = 6;
-            gameSizeY = 8;
+            gameSizeY = 5;
         }
         public void createMap()
         {
             panel.Visible = true;
-            /* connection.Open();
-             query = new NpgsqlCommand("delete from field", connection);
-             query.ExecuteNonQuery();
-             query = new NpgsqlCommand("ALTER SEQUENCE public.field_field_id_seq RESTART WITH 1;", connection);
-             query.ExecuteNonQuery();
-             query = new NpgsqlCommand("select user_id from users where name = @v1;", connection);
-             query.Parameters.AddWithValue("@v1", "Admin");
-             var admin = query.ExecuteScalar();
+            connection.Open();
 
-             query = new NpgsqlCommand("insert into field (field_type, field_owner_id)values (@v1,@v2);", connection);
- */
+            // query = new NpgsqlCommand("delete from field", connection);
+            // query.ExecuteNonQuery();
+            // query = new NpgsqlCommand("ALTER SEQUENCE public.field_field_id_seq RESTART WITH 1;", connection);
+            //query.ExecuteNonQuery();
+            query = new NpgsqlCommand("select user_id from users where name = @v1;", connection);
+            query.Parameters.AddWithValue("@v1", "Admin");
+            var admin_id = query.ExecuteScalar();
+
+            //query = new NpgsqlCommand("insert into field (field_type, field_owner_id)values (@v1,@v2);", connection);
+
             for (int j = 0; j < gameSizeY; j++)
             {
                 for (int i = 0; i < gameSizeX; i++)
@@ -58,14 +59,30 @@ namespace MyTimeAtMetaland
                     gameScreen.Controls.Add(plot);
                     land.Add(plot);
                     plot.Name = land.Count.ToString();
-                    /*query.Parameters.AddWithValue("@v1", "Field");
-                    query.Parameters.AddWithValue("@v2", admin);
-                    query.ExecuteNonQuery();
-                    */
+                    // query.Parameters.AddWithValue("@v1", "Field");
+                    //query.Parameters.AddWithValue("@v2", admin_id);
+                    //                 query.ExecuteNonQuery();
+
                 }
             }
             panel.Location = new Point(land[gameSizeX - 1].Location.X + land[gameSizeX - 1].Size.Width + 20, 0);
-            //  connection.Close();
+            connection.Close();
+            //setAdminBusinesses();
+        }
+        void setAdminBusinesses()
+        {
+
+            connection.Open();
+            using (NpgsqlCommand command = new NpgsqlCommand("UPDATE field SET field_type = 'business' WHERE field_id IN (SELECT field_id FROM field ORDER BY field_id LIMIT 3)", connection))
+            {
+                command.ExecuteNonQuery();
+            }
+            using (NpgsqlCommand command = new NpgsqlCommand())
+            {
+
+            }
+            connection.Close();
+
         }
 
         public void updateMap()
@@ -119,7 +136,7 @@ namespace MyTimeAtMetaland
 
         public void updatePlayer()
         {
-            string sqlQuery = "SELECT money_quantity FROM users WHERE user_id = 2";
+            string sqlQuery = "SELECT money_quantity FROM users WHERE user_id = " + Convert.ToString(gameScreen.newUsers[0].Item3) + ";";
             connection.Open();
             using (NpgsqlCommand command = new NpgsqlCommand(sqlQuery, connection))
             {
@@ -134,7 +151,7 @@ namespace MyTimeAtMetaland
                 }
             }
 
-            string sqlQuery2 = "SELECT item_quantity FROM users WHERE user_id = 2";
+            string sqlQuery2 = "SELECT item_quantity FROM users WHERE user_id = " + Convert.ToString(gameScreen.newUsers[0].Item3) + ";";
 
             using (NpgsqlCommand command = new NpgsqlCommand(sqlQuery2, connection))
             {
@@ -148,7 +165,7 @@ namespace MyTimeAtMetaland
                 }
             }
 
-            string sqlQuery3 = "SELECT food_quantity FROM users WHERE user_id = 2";
+            string sqlQuery3 = "SELECT food_quantity FROM users WHERE user_id = " + Convert.ToString(gameScreen.newUsers[0].Item3) + ";";
 
             using (NpgsqlCommand command = new NpgsqlCommand(sqlQuery3, connection))
             {

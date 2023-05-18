@@ -46,6 +46,7 @@
             label1 = new Label();
             button1 = new Button();
             button2 = new Button();
+            textBox4 = new TextBox();
             SuspendLayout();
             // 
             // textBox10
@@ -54,6 +55,8 @@
             textBox10.Name = "textBox10";
             textBox10.Size = new Size(109, 27);
             textBox10.TabIndex = 33;
+            textBox10.Tag = "Günlük Yemek Gideri";
+            textBox10.Click += textBox_Click;
             // 
             // textBox9
             // 
@@ -61,6 +64,8 @@
             textBox9.Name = "textBox9";
             textBox9.Size = new Size(109, 27);
             textBox9.TabIndex = 32;
+            textBox9.Tag = "Günlük Eşya Gideri";
+            textBox9.Click += textBox_Click;
             // 
             // textBox8
             // 
@@ -68,13 +73,17 @@
             textBox8.Name = "textBox8";
             textBox8.Size = new Size(109, 27);
             textBox8.TabIndex = 31;
+            textBox8.Tag = "Günlük Para Gideri";
+            textBox8.Click += textBox_Click;
             // 
             // textBox7
             // 
             textBox7.Location = new Point(501, 366);
             textBox7.Name = "textBox7";
-            textBox7.Size = new Size(109, 27);
+            textBox7.Size = new Size(50, 27);
             textBox7.TabIndex = 30;
+            textBox7.Tag = "Alan Boyutu";
+            textBox7.Click += textBox_Click;
             // 
             // textBox6
             // 
@@ -82,6 +91,8 @@
             textBox6.Name = "textBox6";
             textBox6.Size = new Size(109, 27);
             textBox6.TabIndex = 29;
+            textBox6.Tag = "Yönetici İşletme Ücreti";
+            textBox6.Click += textBox_Click;
             // 
             // label8
             // 
@@ -139,6 +150,8 @@
             textBox3.Name = "textBox3";
             textBox3.Size = new Size(109, 27);
             textBox3.TabIndex = 23;
+            textBox3.Tag = "Başlangıç Para Miktarı";
+            textBox3.Click += textBox_Click;
             // 
             // label3
             // 
@@ -156,6 +169,8 @@
             textBox2.Name = "textBox2";
             textBox2.Size = new Size(109, 27);
             textBox2.TabIndex = 21;
+            textBox2.Tag = "Başlangıç Eşya Miktarı";
+            textBox2.Click += textBox_Click;
             // 
             // label2
             // 
@@ -173,6 +188,8 @@
             textBox1.Name = "textBox1";
             textBox1.Size = new Size(109, 27);
             textBox1.TabIndex = 19;
+            textBox1.Tag = "Başlangıç Yemek Miktarı";
+            textBox1.Click += textBox_Click;
             // 
             // label1
             // 
@@ -208,11 +225,21 @@
             button2.UseVisualStyleBackColor = true;
             button2.Click += button2_Click_1;
             // 
+            // textBox4
+            // 
+            textBox4.Location = new Point(560, 366);
+            textBox4.Name = "textBox4";
+            textBox4.Size = new Size(50, 27);
+            textBox4.TabIndex = 36;
+            textBox4.Tag = "Alan Boyutu";
+            textBox4.Click += textBox_Click;
+            // 
             // AdminScreen
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ActiveCaption;
+            Controls.Add(textBox4);
             Controls.Add(button2);
             Controls.Add(button1);
             Controls.Add(textBox10);
@@ -237,7 +264,6 @@
             ResumeLayout(false);
             PerformLayout();
         }
-
         #endregion
 
         private TextBox textBox10;
@@ -258,5 +284,6 @@
         private Label label1;
         private Button button1;
         private Button button2;
+        private TextBox textBox4;
     }
 }

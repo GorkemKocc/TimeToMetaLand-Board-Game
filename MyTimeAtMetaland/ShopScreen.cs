@@ -52,14 +52,13 @@ namespace MyTimeAtMetaland
             connection.Close();
             textBox2.Text = (amount * price).ToString() + "$";
 
-            //price = comboBox1.SelectedIndex;
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
 
-            string sqlQuery = "UPDATE users SET money_quantity = money_quantity - @Price";
-            string sqlQuery2 = "UPDATE users SET item_quantity = item_quantity + @Amount";
+            string sqlQuery = "UPDATE users SET money_quantity = money_quantity - @Price WHERE user_id = " + Convert.ToString(gameScreen.newUsers[0].Item3) + ";";
+            string sqlQuery2 = "UPDATE users SET item_quantity = item_quantity + @Amount WHERE user_id = " + Convert.ToString(gameScreen.newUsers[0].Item3) + ";";
 
             connection.Open();
             NpgsqlCommand query = new NpgsqlCommand(sqlQuery, connection);

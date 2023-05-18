@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Npgsql;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+//using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace MyTimeAtMetaland
 {
@@ -22,11 +22,20 @@ namespace MyTimeAtMetaland
 
         private void AdminScreen_Load(object sender, EventArgs e)
         {
-
-
-
+            resetText();
         }
-
+        public void resetText()
+        {
+            textBox1.Text = "0";
+            textBox2.Text = "0";
+            textBox3.Text = "0";
+            textBox4.Text = "0";
+            textBox6.Text = "0";
+            textBox7.Text = "0";
+            textBox8.Text = "0";
+            textBox9.Text = "0";
+            textBox10.Text = "0";
+        }
         public void save_rules()
         {
             NpgsqlConnection connection = new NpgsqlConnection("server=localHost; port=5432; Database=MetaLand; user ID=postgres; password=admin");
@@ -38,7 +47,7 @@ namespace MyTimeAtMetaland
             query.Parameters.AddWithValue("@p4", Convert.ToInt32(textBox10.Text));
             query.Parameters.AddWithValue("@p5", Convert.ToInt32(textBox9.Text));
             query.Parameters.AddWithValue("@p6", Convert.ToInt32(textBox8.Text));
-            query.Parameters.AddWithValue("@p7", Convert.ToInt32(textBox7.Text));
+            query.Parameters.AddWithValue("@p7", Convert.ToDouble(textBox7.Text) + Convert.ToDouble(textBox4.Text) / 10);
             query.Parameters.AddWithValue("@p8", Convert.ToInt32(textBox6.Text));
             query.ExecuteNonQuery();
             connection.Close();
@@ -46,14 +55,39 @@ namespace MyTimeAtMetaland
 
         private void button1_Click(object sender, EventArgs e)
         {
-            save_rules();
-            MessageBox.Show("eklendi");
+            //save
+            if (!int.TryParse(textBox1.Text, out int result0) ||
+                !int.TryParse(textBox2.Text, out int result1) ||
+                !int.TryParse(textBox3.Text, out int result2) ||
+                !int.TryParse(textBox4.Text, out int result3) ||
+                !int.TryParse(textBox6.Text, out int result4) ||
+                !int.TryParse(textBox7.Text, out int result5) ||
+                !int.TryParse(textBox8.Text, out int result6) ||
+                !int.TryParse(textBox9.Text, out int result7) ||
+                !int.TryParse(textBox10.Text, out int result8))
+            {
+                MessageBox.Show("Eksik veya Yanlış karakter girildi");
+            }
+            else
+            {
+                save_rules();
+                MessageBox.Show("eklendi");
+            }
+
 
         }
         private void button2_Click_1(object sender, EventArgs e)
         {
+            //exit
             this.Visible = false;
             loginScreen.Visible = true;
+            resetText();
+        }
+
+        private void textBox_Click(object sender, EventArgs e)
+        {
+            TextBox clickedTextBox = (TextBox)sender;
+            clickedTextBox.Text = string.Empty;
         }
     }
 }

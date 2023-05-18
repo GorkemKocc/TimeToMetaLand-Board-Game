@@ -51,8 +51,8 @@ namespace MyTimeAtMetaland
             //buy
 
 
-            string sqlQuery = "UPDATE users SET money_quantity = money_quantity - @Price";
-            string sqlQuery2 = "UPDATE users SET food_quantity = food_quantity + @Amount";
+            string sqlQuery = "UPDATE users SET money_quantity = money_quantity - @Price WHERE user_id = " + Convert.ToString(gameScreen.users[0].Item3) + ";";
+            string sqlQuery2 = "UPDATE users SET money_quantity = money_quantity - @Price WHERE user_id = " + Convert.ToString(gameScreen.users[0].Item3) + ";";
 
             connection.Open();
             NpgsqlCommand query = new NpgsqlCommand(sqlQuery, connection);

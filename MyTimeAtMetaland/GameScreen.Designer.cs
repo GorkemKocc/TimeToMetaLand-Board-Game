@@ -54,18 +54,16 @@
             panel1.Controls.Add(pictureBox2);
             panel1.Controls.Add(pictureBox1);
             panel1.Controls.Add(label1);
-            panel1.Location = new Point(759, 0);
-            panel1.Margin = new Padding(4);
+            panel1.Location = new Point(607, 0);
             panel1.Name = "panel1";
-            panel1.Size = new Size(435, 630);
+            panel1.Size = new Size(348, 504);
             panel1.TabIndex = 0;
             // 
             // button1
             // 
-            button1.Location = new Point(160, 369);
-            button1.Margin = new Padding(4);
+            button1.Location = new Point(128, 295);
             button1.Name = "button1";
-            button1.Size = new Size(100, 62);
+            button1.Size = new Size(80, 50);
             button1.TabIndex = 7;
             button1.Text = "button1";
             button1.UseVisualStyleBackColor = true;
@@ -74,10 +72,9 @@
             // label4
             // 
             label4.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            label4.Location = new Point(305, 188);
-            label4.Margin = new Padding(4, 0, 4, 0);
+            label4.Location = new Point(244, 150);
             label4.Name = "label4";
-            label4.Size = new Size(56, 25);
+            label4.Size = new Size(45, 20);
             label4.TabIndex = 6;
             label4.Text = "100";
             label4.TextAlign = ContentAlignment.MiddleCenter;
@@ -85,10 +82,9 @@
             // label3
             // 
             label3.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            label3.Location = new Point(202, 188);
-            label3.Margin = new Padding(4, 0, 4, 0);
+            label3.Location = new Point(162, 150);
             label3.Name = "label3";
-            label3.Size = new Size(58, 25);
+            label3.Size = new Size(46, 20);
             label3.TabIndex = 5;
             label3.Text = "100";
             label3.TextAlign = ContentAlignment.MiddleCenter;
@@ -96,10 +92,9 @@
             // label2
             // 
             label2.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            label2.Location = new Point(100, 188);
-            label2.Margin = new Padding(4, 0, 4, 0);
+            label2.Location = new Point(62, 150);
             label2.Name = "label2";
-            label2.Size = new Size(58, 25);
+            label2.Size = new Size(81, 20);
             label2.TabIndex = 4;
             label2.Text = "100";
             label2.TextAlign = ContentAlignment.MiddleCenter;
@@ -107,10 +102,9 @@
             // pictureBox3
             // 
             pictureBox3.Image = (Image)resources.GetObject("pictureBox3.Image");
-            pictureBox3.Location = new Point(295, 116);
-            pictureBox3.Margin = new Padding(4);
+            pictureBox3.Location = new Point(236, 93);
             pictureBox3.Name = "pictureBox3";
-            pictureBox3.Size = new Size(75, 75);
+            pictureBox3.Size = new Size(60, 60);
             pictureBox3.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox3.TabIndex = 3;
             pictureBox3.TabStop = false;
@@ -118,10 +112,9 @@
             // pictureBox2
             // 
             pictureBox2.Image = (Image)resources.GetObject("pictureBox2.Image");
-            pictureBox2.Location = new Point(192, 116);
-            pictureBox2.Margin = new Padding(4);
+            pictureBox2.Location = new Point(154, 93);
             pictureBox2.Name = "pictureBox2";
-            pictureBox2.Size = new Size(75, 75);
+            pictureBox2.Size = new Size(60, 60);
             pictureBox2.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox2.TabIndex = 2;
             pictureBox2.TabStop = false;
@@ -129,10 +122,9 @@
             // pictureBox1
             // 
             pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(91, 116);
-            pictureBox1.Margin = new Padding(4);
+            pictureBox1.Location = new Point(73, 93);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(75, 75);
+            pictureBox1.Size = new Size(60, 60);
             pictureBox1.SizeMode = PictureBoxSizeMode.CenterImage;
             pictureBox1.TabIndex = 1;
             pictureBox1.TabStop = false;
@@ -140,23 +132,21 @@
             // label1
             // 
             label1.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold, GraphicsUnit.Point);
-            label1.Location = new Point(22, 59);
-            label1.Margin = new Padding(4, 0, 4, 0);
+            label1.Location = new Point(18, 47);
             label1.Name = "label1";
-            label1.Size = new Size(412, 39);
+            label1.Size = new Size(330, 31);
             label1.TabIndex = 0;
             label1.Text = "Görkem KOÇ";
             label1.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // GameScreen
             // 
-            AutoScaleDimensions = new SizeF(10F, 25F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             AutoSize = true;
             Controls.Add(panel1);
-            Margin = new Padding(4);
             Name = "GameScreen";
-            Size = new Size(1198, 1066);
+            Size = new Size(958, 853);
             Load += GameScreen_Load;
             panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)pictureBox3).EndInit();
