@@ -33,6 +33,7 @@
             this.realEstateScreen1 = new MyTimeAtMetaland.RealEstateScreen();
             this.loginScreen1 = new MyTimeAtMetaland.LoginScreen();
             this.gameScreen1 = new MyTimeAtMetaland.GameScreen();
+            this.adminScreen1 = new MyTimeAtMetaland.AdminScreen();
             this.SuspendLayout();
             // 
             // shopScreen1
@@ -70,8 +71,16 @@
             this.gameScreen1.AutoSize = true;
             this.gameScreen1.Location = new System.Drawing.Point(0, 0);
             this.gameScreen1.Name = "gameScreen1";
-            this.gameScreen1.Size = new System.Drawing.Size(1198, 634);
+            this.gameScreen1.Size = new System.Drawing.Size(998, 560);
             this.gameScreen1.TabIndex = 5;
+            // 
+            // adminScreen1
+            // 
+            this.adminScreen1.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.adminScreen1.Location = new System.Drawing.Point(0, 0);
+            this.adminScreen1.Name = "adminScreen1";
+            this.adminScreen1.Size = new System.Drawing.Size(998, 560);
+            this.adminScreen1.TabIndex = 6;
             // 
             // Form1
             // 
@@ -80,6 +89,7 @@
             this.AutoSize = true;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ClientSize = new System.Drawing.Size(988, 553);
+            this.Controls.Add(this.adminScreen1);
             this.Controls.Add(this.loginScreen1);
             this.Controls.Add(this.gameScreen1);
             this.Controls.Add(this.realEstateScreen1);
@@ -101,5 +111,6 @@
         private RealEstateScreen realEstateScreen1;
         private LoginScreen loginScreen1;
         private GameScreen gameScreen1;
+        private AdminScreen adminScreen1;
     }
 }

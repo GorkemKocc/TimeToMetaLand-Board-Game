@@ -12,10 +12,12 @@ namespace MyTimeAtMetaland
         }
         private void Form1_Load(object sender, EventArgs e)
         {
-            loginScreen1.Visible = false;
-            gameScreen1.Visible = true;
+            loginScreen1.Visible = true;
+            gameScreen1.Visible = false;
             shopScreen1.Visible = false;
             marketScreen1.Visible = false;
+            realEstateScreen1.Visible = false;
+            adminScreen1.Visible = false;
 
             Game game = new Game();
 
@@ -36,11 +38,13 @@ namespace MyTimeAtMetaland
 
             realEstateScreen1.gameScreen = gameScreen1;
 
+            loginScreen1.gameScreen = gameScreen1;
 
-            realEstateScreen1.Visible = false;
             realEstateScreen1.drawMap();
             shopScreen1.gameScreen = gameScreen1;
             marketScreen1.gameScreen = gameScreen1;
+            loginScreen1.adminScreen = adminScreen1;
+            adminScreen1.loginScreen = loginScreen1;
         }
 
 

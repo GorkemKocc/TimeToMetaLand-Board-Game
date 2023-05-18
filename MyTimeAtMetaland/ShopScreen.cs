@@ -18,7 +18,7 @@ namespace MyTimeAtMetaland
         public Game game;
         int amount = 0;
         int price = 0;
-        public NpgsqlConnection baglanti = new NpgsqlConnection("server=localHost; port=5432; Database=MetaLand; user ID=postgres; password=admin");
+        public NpgsqlConnection connection = new NpgsqlConnection("server=localHost; port=5432; Database=MetaLand; user ID=postgres; password=admin");
 
 
         public ShopScreen()
@@ -36,23 +36,23 @@ namespace MyTimeAtMetaland
         {
             amount = comboBox1.SelectedIndex;
 
-            /* string sqlQuery = "SELECT shop_item_price FROM shop WHERE shop_field_id = 1"; // İlgili tablo ve koşulları burada belirtin.
-             baglanti.Open();
-             using (NpgsqlCommand command = new NpgsqlCommand(sqlQuery, baglanti))
-             {
-                 using (NpgsqlDataReader reader = command.ExecuteReader())
-                 {
-                     if (reader.Read())
-                     {
-                         price = reader.GetInt32(0); // İlgili sütunun indeksini veya adını belirtin.
-                                                     // Değeri istediğiniz şekilde kullanabilirsiniz.
-                     }
-                 }
-             }
-             baglanti.Close();
-             textBox2.Text = (amount * price).ToString() + "$";
+            string sqlQuery = "SELECT shop_item_price FROM shop WHERE shop_field_id = 1";
 
-             // price = comboBox1.SelectedIndex;*/
+            connection.Open();
+            using (NpgsqlCommand command = new NpgsqlCommand(sqlQuery, connection))
+            {
+                using (NpgsqlDataReader reader = command.ExecuteReader())
+                {
+                    if (reader.Read())
+                    {
+                        price = reader.GetInt32(0);
+                    }
+                }
+            }
+            connection.Close();
+            textBox2.Text = (amount * price).ToString() + "$";
+
+            //price = comboBox1.SelectedIndex;
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -61,23 +61,18 @@ namespace MyTimeAtMetaland
             string sqlQuery = "UPDATE users SET money_quantity = money_quantity - @Price";
             string sqlQuery2 = "UPDATE users SET item_quantity = item_quantity + @Amount";
 
-            baglanti.Open();
-            NpgsqlCommand komut = new NpgsqlCommand(sqlQuery, baglanti);
-            NpgsqlCommand komut2 = new NpgsqlCommand(sqlQuery2, baglanti);
-            komut.Parameters.AddWithValue("@Price", price * amount);
-            komut2.Parameters.AddWithValue("@Amount", amount);
+            connection.Open();
+            NpgsqlCommand query = new NpgsqlCommand(sqlQuery, connection);
+            NpgsqlCommand query2 = new NpgsqlCommand(sqlQuery2, connection);
+            query.Parameters.AddWithValue("@Price", price * amount);
+            query2.Parameters.AddWithValue("@Amount", amount);
 
-
-            komut.ExecuteNonQuery();
-            komut2.ExecuteNonQuery();
-            baglanti.Close();
+            query.ExecuteNonQuery();
+            query2.ExecuteNonQuery();
+            connection.Close();
             MessageBox.Show("alındı");
 
             game.updatePlayer();
-
-
-
-
         }
 
         private void button2_Click(object sender, EventArgs e)

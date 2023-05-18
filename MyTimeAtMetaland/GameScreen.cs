@@ -31,7 +31,7 @@ namespace MyTimeAtMetaland
              query = new NpgsqlCommand("Select name, surname from users;", connection);
              reader = query.ExecuteReader();
              //connection.Close(); */
-            //show_player();
+            show_player();
         }
 
 
@@ -43,7 +43,7 @@ namespace MyTimeAtMetaland
         public void show_player()
         {
             connection.Open();
-            query = new NpgsqlCommand("Select name, surname from users;", connection);
+            query = new NpgsqlCommand("Select name, surname from users where user_id = 2;", connection);
             reader = query.ExecuteReader();
             //connection.Close();
 
@@ -53,16 +53,16 @@ namespace MyTimeAtMetaland
             connection.Close();
             connection.Open();
             query = new NpgsqlCommand();
-            query.CommandText = "Select food_quantity from users where user_id=1;";
-            query = new NpgsqlCommand("Select food_quantity from users where user_id=1;", connection);
+            query.CommandText = "Select food_quantity from users where user_id=2;";
+            query = new NpgsqlCommand("Select food_quantity from users where user_id=2;", connection);
             query.ExecuteNonQuery();
             var foodQuantity = query.ExecuteScalar();
 
-            query.CommandText = "Select item_quantity from users where user_id=1;";
+            query.CommandText = "Select item_quantity from users where user_id=2;";
             query.ExecuteNonQuery();
             var itemQuantity = query.ExecuteScalar();
 
-            query.CommandText = "Select money_quantity from users where user_id=1;";
+            query.CommandText = "Select money_quantity from users where user_id=2;";
             query.ExecuteNonQuery();
             var moneyQuantity = query.ExecuteScalar();
 

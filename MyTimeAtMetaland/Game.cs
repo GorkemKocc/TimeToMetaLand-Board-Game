@@ -119,12 +119,7 @@ namespace MyTimeAtMetaland
 
         public void updatePlayer()
         {
-
-
-
-
-
-            string sqlQuery = "SELECT money_quantity FROM users WHERE user_id = 1"; // İlgili tablo ve koşulları burada belirtin.
+            string sqlQuery = "SELECT money_quantity FROM users WHERE user_id = 2";
             connection.Open();
             using (NpgsqlCommand command = new NpgsqlCommand(sqlQuery, connection))
             {
@@ -139,7 +134,7 @@ namespace MyTimeAtMetaland
                 }
             }
 
-            string sqlQuery2 = "SELECT item_quantity FROM users WHERE user_id = 1"; // İlgili tablo ve koşulları burada belirtin.
+            string sqlQuery2 = "SELECT item_quantity FROM users WHERE user_id = 2";
 
             using (NpgsqlCommand command = new NpgsqlCommand(sqlQuery2, connection))
             {
@@ -153,7 +148,7 @@ namespace MyTimeAtMetaland
                 }
             }
 
-            string sqlQuery3 = "SELECT food_quantity FROM users WHERE user_id = 1"; // İlgili tablo ve koşulları burada belirtin.
+            string sqlQuery3 = "SELECT food_quantity FROM users WHERE user_id = 2";
 
             using (NpgsqlCommand command = new NpgsqlCommand(sqlQuery3, connection))
             {

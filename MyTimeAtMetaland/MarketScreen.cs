@@ -17,7 +17,7 @@ namespace MyTimeAtMetaland
         public GameScreen gameScreen;
         internal Game game;
         public List<System.Windows.Forms.Button> land;
-        NpgsqlConnection baglanti = new NpgsqlConnection("server=localHost; port=5432; Database=MetaLand; user ID=postgres; password=bunuunutmalütfen21");
+        NpgsqlConnection connection = new NpgsqlConnection("server=localHost; port=5432; Database=MetaLand; user ID=postgres; password=admin");
         int amount = 0;
         int price = 0;
         public MarketScreen()
@@ -28,8 +28,6 @@ namespace MyTimeAtMetaland
                 comboBox1.Items.Add(i);
             }
             comboBox1.SelectedIndex = 0;
-
-
         }
 
         private void Market_Load(object sender, EventArgs e)
@@ -42,7 +40,7 @@ namespace MyTimeAtMetaland
             //exit
             comboBox1.SelectedIndex = 0;
             this.Visible = false;
-            game.updateMap();
+            //game.updateMap();
             gameScreen.Visible = true;
 
 
@@ -56,17 +54,15 @@ namespace MyTimeAtMetaland
             string sqlQuery = "UPDATE users SET money_quantity = money_quantity - @Price";
             string sqlQuery2 = "UPDATE users SET food_quantity = food_quantity + @Amount";
 
-            baglanti.Open();
-            NpgsqlCommand komut = new NpgsqlCommand(sqlQuery, baglanti);
-            NpgsqlCommand komut2 = new NpgsqlCommand(sqlQuery2, baglanti);
-            komut.Parameters.AddWithValue("@Price", price);
-            komut2.Parameters.AddWithValue("@Amount", amount);
+            connection.Open();
+            NpgsqlCommand query = new NpgsqlCommand(sqlQuery, connection);
+            NpgsqlCommand query2 = new NpgsqlCommand(sqlQuery2, connection);
+            query.Parameters.AddWithValue("@Price", price * amount);
+            query2.Parameters.AddWithValue("@Amount", amount);
 
-
-            komut.ExecuteNonQuery();
-            komut2.ExecuteNonQuery();
-            baglanti.Close();
-
+            query.ExecuteNonQuery();
+            query2.ExecuteNonQuery();
+            connection.Close();
 
             MessageBox.Show("alındı");
 
@@ -76,22 +72,22 @@ namespace MyTimeAtMetaland
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             amount = comboBox1.SelectedIndex;
-            /*            
-                    string sqlQuery = "SELECT shop_item_price FROM shop WHERE shop_field_id = 1"; // İlgili tablo ve koşulları burada belirtin.
-                    baglanti.Open();
-                    using (NpgsqlCommand command = new NpgsqlCommand(sqlQuery, baglanti))
+
+            string sqlQuery = "SELECT grocery_food_price FROM grocery WHERE grocery_field_id = 2";
+            connection.Open();
+            using (NpgsqlCommand command = new NpgsqlCommand(sqlQuery, connection))
+            {
+                using (NpgsqlDataReader reader = command.ExecuteReader())
+                {
+                    if (reader.Read())
                     {
-                        using (NpgsqlDataReader reader = command.ExecuteReader())
-                        {
-                            if (reader.Read())
-                            {
-                                price = reader.GetInt32(0); 
-                            }
-                        }
+                        price = reader.GetInt32(0);
                     }
-                    baglanti.Close();
-                    textBox1.Text = (amount*price).ToString() + "$";
-            */
+                }
+            }
+            connection.Close();
+            textBox1.Text = (amount * price).ToString() + "$";
+
         }
     }
 }

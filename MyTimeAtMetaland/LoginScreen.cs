@@ -13,6 +13,8 @@ namespace MyTimeAtMetaland
 {
     public partial class LoginScreen : UserControl
     {
+        public GameScreen gameScreen;
+        public AdminScreen adminScreen;
         public LoginScreen()
         {
             InitializeComponent();
@@ -34,12 +36,21 @@ namespace MyTimeAtMetaland
             add.ExecuteNonQuery();
             connection.Close();
             MessageBox.Show("eklnedi");
-
+            textBox1.Text = "";
+            textBox2.Text = "";
+            textBox3.Text = "";
         }
 
-        private void pictureBox1_Click(object sender, EventArgs e)
+        private void button2_Click(object sender, EventArgs e)
         {
+            this.Visible = false;
+            gameScreen.Visible = true;
+        }
 
+        private void button3_Click(object sender, EventArgs e)
+        {
+            this.Visible = false;
+            adminScreen.Visible = true;
         }
     }
 }
