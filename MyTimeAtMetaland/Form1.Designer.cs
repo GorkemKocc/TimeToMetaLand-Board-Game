@@ -28,79 +28,87 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.shopScreen1 = new MyTimeAtMetaland.ShopScreen();
-            this.marketScreen1 = new MyTimeAtMetaland.MarketScreen();
-            this.realEstateScreen1 = new MyTimeAtMetaland.RealEstateScreen();
-            this.loginScreen1 = new MyTimeAtMetaland.LoginScreen();
-            this.gameScreen1 = new MyTimeAtMetaland.GameScreen();
-            this.adminScreen1 = new MyTimeAtMetaland.AdminScreen();
-            this.SuspendLayout();
+            shopScreen1 = new ShopScreen();
+            marketScreen1 = new MarketScreen();
+            realEstateScreen1 = new RealEstateScreen();
+            loginScreen1 = new LoginScreen();
+            gameScreen1 = new GameScreen();
+            adminScreen1 = new AdminScreen();
+            dataSet1 = new DataSet();
+            SuspendLayout();
             // 
             // shopScreen1
             // 
-            this.shopScreen1.Location = new System.Drawing.Point(0, 0);
-            this.shopScreen1.Name = "shopScreen1";
-            this.shopScreen1.Size = new System.Drawing.Size(987, 555);
-            this.shopScreen1.TabIndex = 1;
+            shopScreen1.Location = new Point(0, 0);
+            shopScreen1.Name = "shopScreen1";
+            shopScreen1.Size = new Size(987, 555);
+            shopScreen1.TabIndex = 1;
             // 
             // marketScreen1
             // 
-            this.marketScreen1.Location = new System.Drawing.Point(0, 0);
-            this.marketScreen1.Name = "marketScreen1";
-            this.marketScreen1.Size = new System.Drawing.Size(987, 560);
-            this.marketScreen1.TabIndex = 2;
-            this.marketScreen1.Load += new System.EventHandler(this.marketScreen1_Load);
+            marketScreen1.Location = new Point(0, 0);
+            marketScreen1.Name = "marketScreen1";
+            marketScreen1.Size = new Size(987, 560);
+            marketScreen1.TabIndex = 2;
+            marketScreen1.Load += marketScreen1_Load;
             // 
             // realEstateScreen1
             // 
-            this.realEstateScreen1.Location = new System.Drawing.Point(0, 0);
-            this.realEstateScreen1.Name = "realEstateScreen1";
-            this.realEstateScreen1.Size = new System.Drawing.Size(998, 555);
-            this.realEstateScreen1.TabIndex = 3;
+            realEstateScreen1.Location = new Point(0, 0);
+            realEstateScreen1.Name = "realEstateScreen1";
+            realEstateScreen1.Size = new Size(998, 555);
+            realEstateScreen1.TabIndex = 3;
             // 
             // loginScreen1
             // 
-            this.loginScreen1.Location = new System.Drawing.Point(0, 0);
-            this.loginScreen1.Name = "loginScreen1";
-            this.loginScreen1.Size = new System.Drawing.Size(1000, 555);
-            this.loginScreen1.TabIndex = 0;
-            this.loginScreen1.Load += new System.EventHandler(this.loginScreen1_Load);
+            loginScreen1.Location = new Point(0, 0);
+            loginScreen1.Name = "loginScreen1";
+            loginScreen1.Size = new Size(1000, 555);
+            loginScreen1.TabIndex = 0;
+            loginScreen1.Load += loginScreen1_Load;
             // 
             // gameScreen1
             // 
-            this.gameScreen1.AutoSize = true;
-            this.gameScreen1.Location = new System.Drawing.Point(0, 0);
-            this.gameScreen1.Name = "gameScreen1";
-            this.gameScreen1.Size = new System.Drawing.Size(998, 560);
-            this.gameScreen1.TabIndex = 5;
+            gameScreen1.AutoSize = true;
+            gameScreen1.Location = new Point(0, 0);
+            gameScreen1.Name = "gameScreen1";
+            gameScreen1.Size = new Size(998, 560);
+            gameScreen1.TabIndex = 5;
             // 
             // adminScreen1
             // 
-            this.adminScreen1.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.adminScreen1.Location = new System.Drawing.Point(0, 0);
-            this.adminScreen1.Name = "adminScreen1";
-            this.adminScreen1.Size = new System.Drawing.Size(998, 560);
-            this.adminScreen1.TabIndex = 6;
+            adminScreen1.BackColor = SystemColors.ActiveCaption;
+            adminScreen1.Location = new Point(0, 0);
+            adminScreen1.Name = "adminScreen1";
+            adminScreen1.Size = new Size(998, 560);
+            adminScreen1.TabIndex = 6;
+            // 
+            // dataSet1
+            // 
+            dataSet1.Location = new Point(0, 0);
+            dataSet1.Name = "dataSet1";
+            dataSet1.Size = new Size(1040, 574);
+            dataSet1.TabIndex = 7;
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.AutoSize = true;
-            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.ClientSize = new System.Drawing.Size(988, 553);
-            this.Controls.Add(this.adminScreen1);
-            this.Controls.Add(this.loginScreen1);
-            this.Controls.Add(this.gameScreen1);
-            this.Controls.Add(this.realEstateScreen1);
-            this.Controls.Add(this.marketScreen1);
-            this.Controls.Add(this.shopScreen1);
-            this.Name = "Form1";
-            this.Text = "Form1";
-            this.Load += new System.EventHandler(this.Form1_Load);
-            this.ResumeLayout(false);
-            this.PerformLayout();
-
+            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleMode = AutoScaleMode.Font;
+            AutoSize = true;
+            AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            ClientSize = new Size(988, 553);
+            Controls.Add(dataSet1);
+            Controls.Add(adminScreen1);
+            Controls.Add(loginScreen1);
+            Controls.Add(gameScreen1);
+            Controls.Add(realEstateScreen1);
+            Controls.Add(marketScreen1);
+            Controls.Add(shopScreen1);
+            Name = "Form1";
+            Text = "Form1";
+            Load += Form1_Load;
+            ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -112,5 +120,6 @@
         private LoginScreen loginScreen1;
         private GameScreen gameScreen1;
         private AdminScreen adminScreen1;
+        private DataSet dataSet1;
     }
 }

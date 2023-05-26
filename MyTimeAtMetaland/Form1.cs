@@ -18,6 +18,7 @@ namespace MyTimeAtMetaland
             marketScreen1.Visible = false;
             realEstateScreen1.Visible = false;
             adminScreen1.Visible = false;
+            dataSet1.Visible = false;
 
             Game game = new Game();
 
@@ -47,6 +48,8 @@ namespace MyTimeAtMetaland
             marketScreen1.gameScreen = gameScreen1;
             loginScreen1.adminScreen = adminScreen1;
             adminScreen1.loginScreen = loginScreen1;
+            gameScreen1.dataSet = dataSet1;
+            dataSet1.gameScreen = gameScreen1;
         }
 
 

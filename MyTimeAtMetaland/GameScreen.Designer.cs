@@ -38,6 +38,7 @@
             pictureBox2 = new PictureBox();
             pictureBox1 = new PictureBox();
             label1 = new Label();
+            button2 = new Button();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
@@ -46,6 +47,7 @@
             // 
             // panel1
             // 
+            panel1.Controls.Add(button2);
             panel1.Controls.Add(button1);
             panel1.Controls.Add(label4);
             panel1.Controls.Add(label3);
@@ -65,7 +67,7 @@
             button1.Name = "button1";
             button1.Size = new Size(80, 50);
             button1.TabIndex = 7;
-            button1.Text = "button1";
+            button1.Text = "Tur Atla";
             button1.UseVisualStyleBackColor = true;
             button1.Click += button1_Click;
             // 
@@ -139,6 +141,16 @@
             label1.Text = "Görkem KOÇ";
             label1.TextAlign = ContentAlignment.MiddleCenter;
             // 
+            // button2
+            // 
+            button2.Location = new Point(0, 0);
+            button2.Name = "button2";
+            button2.Size = new Size(80, 50);
+            button2.TabIndex = 8;
+            button2.Text = "Admin";
+            button2.UseVisualStyleBackColor = true;
+            button2.Click += button2_Click;
+            // 
             // GameScreen
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -166,5 +178,6 @@
         public Label label1;
         public Button button1;
         public Label label2;
+        public Button button2;
     }
 }

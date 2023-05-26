@@ -17,6 +17,7 @@ namespace MyTimeAtMetaland
     public partial class GameScreen : UserControl
     {
         public Panel panel;
+        public DataSet dataSet;
         /* public UserControl gameScreen, shopScreen, marketScreen, realEstateScreen;
          public List<Button> land = new List<Button>();
          public int gameSizeX, gameSizeY;*/
@@ -122,6 +123,12 @@ namespace MyTimeAtMetaland
             if (newUsers.Count != 1)
                 newUsers.RemoveAt(0);
             show_player();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            dataSet.Visible = true;
+            this.Visible = false;
         }
     }
 }
