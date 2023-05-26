@@ -91,10 +91,11 @@ namespace MyTimeAtMetaland
         {
             // ADMİN EKRANINDAN GELELN EŞYA YEMEK COMİSYON SET ET ///////////////
 
-            using (NpgsqlCommand command = new NpgsqlCommand("UPDATE field SET on_sale = @v1, field_type = 'business' WHERE field_id IN (SELECT field_id FROM field ORDER BY field_id LIMIT 3)", connection))
+            using (NpgsqlCommand command = new NpgsqlCommand("UPDATE field SET on_sale = @v1, field_type = 'business', sale_price = @v2 WHERE field_id IN (SELECT field_id FROM field ORDER BY field_id LIMIT 3)", connection))
             {
                 connection.Open();
                 command.Parameters.AddWithValue("@v1", false);
+                command.Parameters.AddWithValue("@v2", 0);
                 command.ExecuteNonQuery();
                 connection.Close();
             }
@@ -139,7 +140,6 @@ namespace MyTimeAtMetaland
 
                 connection.Close();
             }
-            //"INSERT INTO grocery (grocery_field_id, grocery_food_price) VALUES (@v1, @v2)"
             using (NpgsqlCommand query = new NpgsqlCommand("INSERT INTO shop (shop_field_id, shop_item_price) VALUES (@v1, @v2)", connection))
             {
                 connection.Open();
@@ -175,7 +175,6 @@ namespace MyTimeAtMetaland
             }
 
         }
-
 
         private void plot_Click(object sender, EventArgs e)
         {
