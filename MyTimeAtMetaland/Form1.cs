@@ -26,13 +26,17 @@ namespace MyTimeAtMetaland
             game.marketScreen = marketScreen1;
             game.realEstateScreen = realEstateScreen1;
             game.panel = gameScreen1.panel;
-            game.createMap();
+            game.adminScreen = adminScreen1;
+
+            //game.createMap();
 
             marketScreen1.land = game.land;
             marketScreen1.game = game;
 
             realEstateScreen1.land = game.land;
             realEstateScreen1.game = game;
+
+            loginScreen1.game = game;
 
             shopScreen1.game = game;
 

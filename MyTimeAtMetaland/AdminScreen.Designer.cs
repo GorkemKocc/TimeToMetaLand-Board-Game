@@ -47,11 +47,21 @@
             button1 = new Button();
             button2 = new Button();
             textBox4 = new TextBox();
+            textBox5 = new TextBox();
+            label9 = new Label();
+            textBox11 = new TextBox();
+            label10 = new Label();
+            textBox12 = new TextBox();
+            label11 = new Label();
+            textBox13 = new TextBox();
+            label12 = new Label();
+            textBox14 = new TextBox();
+            label13 = new Label();
             SuspendLayout();
             // 
             // textBox10
             // 
-            textBox10.Location = new Point(501, 218);
+            textBox10.Location = new Point(489, 146);
             textBox10.Name = "textBox10";
             textBox10.Size = new Size(109, 27);
             textBox10.TabIndex = 33;
@@ -60,7 +70,7 @@
             // 
             // textBox9
             // 
-            textBox9.Location = new Point(501, 266);
+            textBox9.Location = new Point(489, 193);
             textBox9.Name = "textBox9";
             textBox9.Size = new Size(109, 27);
             textBox9.TabIndex = 32;
@@ -69,7 +79,7 @@
             // 
             // textBox8
             // 
-            textBox8.Location = new Point(501, 314);
+            textBox8.Location = new Point(489, 237);
             textBox8.Name = "textBox8";
             textBox8.Size = new Size(109, 27);
             textBox8.TabIndex = 31;
@@ -78,7 +88,7 @@
             // 
             // textBox7
             // 
-            textBox7.Location = new Point(501, 366);
+            textBox7.Location = new Point(489, 277);
             textBox7.Name = "textBox7";
             textBox7.Size = new Size(50, 27);
             textBox7.TabIndex = 30;
@@ -87,7 +97,7 @@
             // 
             // textBox6
             // 
-            textBox6.Location = new Point(501, 411);
+            textBox6.Location = new Point(489, 318);
             textBox6.Name = "textBox6";
             textBox6.Size = new Size(109, 27);
             textBox6.TabIndex = 29;
@@ -98,7 +108,7 @@
             // 
             label8.AutoSize = true;
             label8.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            label8.Location = new Point(225, 411);
+            label8.Location = new Point(213, 317);
             label8.Name = "label8";
             label8.Size = new Size(204, 28);
             label8.TabIndex = 28;
@@ -108,7 +118,7 @@
             // 
             label7.AutoSize = true;
             label7.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            label7.Location = new Point(225, 360);
+            label7.Location = new Point(213, 278);
             label7.Name = "label7";
             label7.Size = new Size(118, 28);
             label7.TabIndex = 27;
@@ -118,7 +128,7 @@
             // 
             label6.AutoSize = true;
             label6.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            label6.Location = new Point(225, 314);
+            label6.Location = new Point(213, 237);
             label6.Name = "label6";
             label6.Size = new Size(174, 28);
             label6.TabIndex = 26;
@@ -128,7 +138,7 @@
             // 
             label5.AutoSize = true;
             label5.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            label5.Location = new Point(225, 266);
+            label5.Location = new Point(213, 193);
             label5.Name = "label5";
             label5.Size = new Size(175, 28);
             label5.TabIndex = 25;
@@ -138,7 +148,7 @@
             // 
             label4.AutoSize = true;
             label4.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            label4.Location = new Point(225, 218);
+            label4.Location = new Point(213, 146);
             label4.Name = "label4";
             label4.Size = new Size(193, 28);
             label4.TabIndex = 24;
@@ -146,7 +156,7 @@
             // 
             // textBox3
             // 
-            textBox3.Location = new Point(501, 170);
+            textBox3.Location = new Point(489, 101);
             textBox3.Name = "textBox3";
             textBox3.Size = new Size(109, 27);
             textBox3.TabIndex = 23;
@@ -157,7 +167,7 @@
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            label3.Location = new Point(225, 170);
+            label3.Location = new Point(213, 101);
             label3.Name = "label3";
             label3.Size = new Size(202, 28);
             label3.TabIndex = 22;
@@ -165,7 +175,7 @@
             // 
             // textBox2
             // 
-            textBox2.Location = new Point(501, 116);
+            textBox2.Location = new Point(489, 57);
             textBox2.Name = "textBox2";
             textBox2.Size = new Size(109, 27);
             textBox2.TabIndex = 21;
@@ -176,7 +186,7 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            label2.Location = new Point(225, 116);
+            label2.Location = new Point(213, 57);
             label2.Name = "label2";
             label2.Size = new Size(203, 28);
             label2.TabIndex = 20;
@@ -184,7 +194,7 @@
             // 
             // textBox1
             // 
-            textBox1.Location = new Point(501, 70);
+            textBox1.Location = new Point(489, 18);
             textBox1.Name = "textBox1";
             textBox1.Size = new Size(109, 27);
             textBox1.TabIndex = 19;
@@ -195,7 +205,7 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            label1.Location = new Point(225, 64);
+            label1.Location = new Point(213, 12);
             label1.Name = "label1";
             label1.Size = new Size(221, 28);
             label1.TabIndex = 18;
@@ -227,18 +237,118 @@
             // 
             // textBox4
             // 
-            textBox4.Location = new Point(560, 366);
+            textBox4.Location = new Point(548, 277);
             textBox4.Name = "textBox4";
             textBox4.Size = new Size(50, 27);
             textBox4.TabIndex = 36;
             textBox4.Tag = "Alan Boyutu";
             textBox4.Click += textBox_Click;
             // 
+            // textBox5
+            // 
+            textBox5.Location = new Point(489, 358);
+            textBox5.Name = "textBox5";
+            textBox5.Size = new Size(109, 27);
+            textBox5.TabIndex = 38;
+            textBox5.Tag = "Başlangıç Yemek Miktarı";
+            // 
+            // label9
+            // 
+            label9.AutoSize = true;
+            label9.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            label9.Location = new Point(213, 352);
+            label9.Name = "label9";
+            label9.Size = new Size(102, 28);
+            label9.TabIndex = 37;
+            label9.Text = "Eşya Fiyatı";
+            // 
+            // textBox11
+            // 
+            textBox11.Location = new Point(489, 397);
+            textBox11.Name = "textBox11";
+            textBox11.Size = new Size(109, 27);
+            textBox11.TabIndex = 40;
+            textBox11.Tag = "Başlangıç Yemek Miktarı";
+            // 
+            // label10
+            // 
+            label10.AutoSize = true;
+            label10.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            label10.Location = new Point(213, 391);
+            label10.Name = "label10";
+            label10.Size = new Size(120, 28);
+            label10.TabIndex = 39;
+            label10.Text = "Yemek Fiyatı";
+            // 
+            // textBox12
+            // 
+            textBox12.Location = new Point(489, 434);
+            textBox12.Name = "textBox12";
+            textBox12.Size = new Size(109, 27);
+            textBox12.TabIndex = 42;
+            textBox12.Tag = "Başlangıç Yemek Miktarı";
+            // 
+            // label11
+            // 
+            label11.AutoSize = true;
+            label11.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            label11.Location = new Point(213, 428);
+            label11.Name = "label11";
+            label11.Size = new Size(102, 28);
+            label11.TabIndex = 41;
+            label11.Text = "Arsa Fiyatı";
+            // 
+            // textBox13
+            // 
+            textBox13.Location = new Point(489, 467);
+            textBox13.Name = "textBox13";
+            textBox13.Size = new Size(109, 27);
+            textBox13.TabIndex = 44;
+            textBox13.Tag = "Başlangıç Yemek Miktarı";
+            // 
+            // label12
+            // 
+            label12.AutoSize = true;
+            label12.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            label12.Location = new Point(213, 461);
+            label12.Name = "label12";
+            label12.Size = new Size(167, 28);
+            label12.TabIndex = 43;
+            label12.Text = "Emlak Komisyonu\r\n";
+            // 
+            // textBox14
+            // 
+            textBox14.Location = new Point(489, 501);
+            textBox14.Name = "textBox14";
+            textBox14.Size = new Size(109, 27);
+            textBox14.TabIndex = 46;
+            textBox14.Tag = "Başlangıç Yemek Miktarı";
+            // 
+            // label13
+            // 
+            label13.AutoSize = true;
+            label13.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            label13.Location = new Point(213, 495);
+            label13.Name = "label13";
+            label13.Size = new Size(193, 28);
+            label13.TabIndex = 45;
+            label13.Text = "İşletme Kurma Ücreti\r\n";
+            // 
             // AdminScreen
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ActiveCaption;
+            Controls.Add(textBox14);
+            Controls.Add(label13);
+            Controls.Add(textBox13);
+            Controls.Add(label12);
+            Controls.Add(textBox12);
+            Controls.Add(label11);
+            Controls.Add(textBox11);
+            Controls.Add(label10);
+            Controls.Add(textBox5);
+            Controls.Add(label9);
             Controls.Add(textBox4);
             Controls.Add(button2);
             Controls.Add(button1);
@@ -259,7 +369,7 @@
             Controls.Add(textBox1);
             Controls.Add(label1);
             Name = "AdminScreen";
-            Size = new Size(889, 500);
+            Size = new Size(889, 540);
             Load += AdminScreen_Load;
             ResumeLayout(false);
             PerformLayout();
@@ -285,5 +395,15 @@
         private Button button1;
         private Button button2;
         private TextBox textBox4;
+        private TextBox textBox5;
+        private Label label9;
+        private TextBox textBox11;
+        private Label label10;
+        private TextBox textBox12;
+        private Label label11;
+        private TextBox textBox13;
+        private Label label12;
+        private TextBox textBox14;
+        private Label label13;
     }
 }

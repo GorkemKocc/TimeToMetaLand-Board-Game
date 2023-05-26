@@ -15,6 +15,7 @@ namespace MyTimeAtMetaland
     {
         public GameScreen gameScreen;
         public AdminScreen adminScreen;
+        public Game game;
         public LoginScreen()
         {
             InitializeComponent();
@@ -43,12 +44,15 @@ namespace MyTimeAtMetaland
 
         private void button2_Click(object sender, EventArgs e)
         {
+            //play button
             this.Visible = false;
             gameScreen.Visible = true;
+            game.createMap();
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
+            //admin button
             this.Visible = false;
             adminScreen.Visible = true;
         }

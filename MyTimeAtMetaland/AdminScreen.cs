@@ -15,6 +15,7 @@ namespace MyTimeAtMetaland
     public partial class AdminScreen : UserControl
     {
         public LoginScreen loginScreen;
+        public int foodPrice, itemPrice, fieldPrice, estateCommission;
         public AdminScreen()
         {
             InitializeComponent();
@@ -30,17 +31,25 @@ namespace MyTimeAtMetaland
             textBox2.Text = "0";
             textBox3.Text = "0";
             textBox4.Text = "0";
+            textBox5.Text = "0";
             textBox6.Text = "0";
             textBox7.Text = "0";
             textBox8.Text = "0";
             textBox9.Text = "0";
             textBox10.Text = "0";
+            textBox11.Text = "0";
+            textBox12.Text = "0";
+            textBox13.Text = "0";
+            textBox14.Text = "0";
+
         }
         public void save_rules()
         {
             NpgsqlConnection connection = new NpgsqlConnection("server=localHost; port=5432; Database=MetaLand; user ID=postgres; password=admin");
             connection.Open();
-            NpgsqlCommand query = new NpgsqlCommand("insert into game (initial_food_quantity, initial_item_quantity, initial_money_quantity, daily_food_expense, daily_item_expense, daily_money_expense, map_size, admin_business_salary) values (@p1,@p2,@p3,@p4,@p5,@p6,@p7,@p8)", connection);
+            // eskiyi sil yeniyi kaydet yap AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA///////////////////////
+
+            NpgsqlCommand query = new NpgsqlCommand("insert into game (initial_food_quantity, initial_item_quantity, initial_money_quantity, daily_food_expense, daily_item_expense, daily_money_expense, map_size, admin_business_salary, business_cost) values (@p1,@p2,@p3,@p4,@p5,@p6,@p7,@p8, @p9)", connection);
             query.Parameters.AddWithValue("@p1", Convert.ToInt32(textBox1.Text));
             query.Parameters.AddWithValue("@p2", Convert.ToInt32(textBox2.Text));
             query.Parameters.AddWithValue("@p3", Convert.ToInt32(textBox3.Text));
@@ -49,7 +58,14 @@ namespace MyTimeAtMetaland
             query.Parameters.AddWithValue("@p6", Convert.ToInt32(textBox8.Text));
             query.Parameters.AddWithValue("@p7", Convert.ToDouble(textBox7.Text) + Convert.ToDouble(textBox4.Text) / 10);
             query.Parameters.AddWithValue("@p8", Convert.ToInt32(textBox6.Text));
+            query.Parameters.AddWithValue("@p9", Convert.ToInt32(textBox14.Text));
             query.ExecuteNonQuery();
+
+            //query.CommandText = "Select ";
+            itemPrice = Convert.ToInt32(textBox5.Text);
+            foodPrice = Convert.ToInt32(textBox11.Text);
+            fieldPrice = Convert.ToInt32(textBox12.Text);
+            estateCommission = Convert.ToInt32(textBox13.Text);
             connection.Close();
         }
 
@@ -60,11 +76,18 @@ namespace MyTimeAtMetaland
                 !int.TryParse(textBox2.Text, out int result1) ||
                 !int.TryParse(textBox3.Text, out int result2) ||
                 !int.TryParse(textBox4.Text, out int result3) ||
-                !int.TryParse(textBox6.Text, out int result4) ||
-                !int.TryParse(textBox7.Text, out int result5) ||
-                !int.TryParse(textBox8.Text, out int result6) ||
-                !int.TryParse(textBox9.Text, out int result7) ||
-                !int.TryParse(textBox10.Text, out int result8))
+                !int.TryParse(textBox5.Text, out int result5) ||
+                !int.TryParse(textBox6.Text, out int result6) ||
+                !int.TryParse(textBox7.Text, out int result7) ||
+                !int.TryParse(textBox8.Text, out int result8) ||
+                !int.TryParse(textBox9.Text, out int result9) ||
+                !int.TryParse(textBox10.Text, out int result10) ||
+                !int.TryParse(textBox11.Text, out int result11) ||
+                !int.TryParse(textBox12.Text, out int result12) ||
+                !int.TryParse(textBox13.Text, out int result13) ||
+                !int.TryParse(textBox14.Text, out int result14))
+
+
             {
                 MessageBox.Show("Eksik veya Yanlış karakter girildi");
             }
@@ -89,5 +112,7 @@ namespace MyTimeAtMetaland
             TextBox clickedTextBox = (TextBox)sender;
             clickedTextBox.Text = string.Empty;
         }
+
+
     }
 }
