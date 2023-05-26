@@ -205,8 +205,10 @@ namespace MyTimeAtMetaland
                 }
                 else if (field_type.ToString() == "real_estate")
                 {
+                    realEstateScreen.estateId = int.Parse(button.Name);
                     realEstateScreen.Visible = true;
                     gameScreen.Visible = false;
+                    realEstateScreen.drawMap();
                 }
 
             }

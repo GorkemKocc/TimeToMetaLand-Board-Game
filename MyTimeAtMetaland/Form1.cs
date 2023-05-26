@@ -28,7 +28,6 @@ namespace MyTimeAtMetaland
             game.panel = gameScreen1.panel;
             game.adminScreen = adminScreen1;
 
-            //game.createMap();
 
             marketScreen1.land = game.land;
             marketScreen1.game = game;
@@ -44,7 +43,6 @@ namespace MyTimeAtMetaland
 
             loginScreen1.gameScreen = gameScreen1;
 
-            realEstateScreen1.drawMap();
             shopScreen1.gameScreen = gameScreen1;
             marketScreen1.gameScreen = gameScreen1;
             loginScreen1.adminScreen = adminScreen1;
