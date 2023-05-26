@@ -40,10 +40,8 @@
             pictureBox2 = new PictureBox();
             label1 = new Label();
             label3 = new Label();
-            pictureBox3 = new PictureBox();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
             SuspendLayout();
             // 
             // pictureBox1
@@ -78,7 +76,7 @@
             // button2
             // 
             button2.Location = new Point(58, 480);
-            button2.Margin = new Padding(2, 2, 2, 2);
+            button2.Margin = new Padding(2);
             button2.Name = "button2";
             button2.Size = new Size(90, 27);
             button2.TabIndex = 0;
@@ -89,7 +87,7 @@
             // button3
             // 
             button3.Location = new Point(187, 480);
-            button3.Margin = new Padding(2, 2, 2, 2);
+            button3.Margin = new Padding(2);
             button3.Name = "button3";
             button3.Size = new Size(90, 27);
             button3.TabIndex = 3;
@@ -100,7 +98,7 @@
             // textBox1
             // 
             textBox1.Location = new Point(445, 462);
-            textBox1.Margin = new Padding(2, 2, 2, 2);
+            textBox1.Margin = new Padding(2);
             textBox1.Name = "textBox1";
             textBox1.Size = new Size(168, 27);
             textBox1.TabIndex = 4;
@@ -108,7 +106,7 @@
             // textBox2
             // 
             textBox2.Location = new Point(445, 506);
-            textBox2.Margin = new Padding(2, 2, 2, 2);
+            textBox2.Margin = new Padding(2);
             textBox2.Name = "textBox2";
             textBox2.Size = new Size(168, 27);
             textBox2.TabIndex = 5;
@@ -116,7 +114,7 @@
             // label2
             // 
             label2.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            label2.Location = new Point(881, 506);
+            label2.Location = new Point(873, 502);
             label2.Name = "label2";
             label2.Size = new Size(81, 20);
             label2.TabIndex = 7;
@@ -127,10 +125,10 @@
             // pictureBox2
             // 
             pictureBox2.Image = (Image)resources.GetObject("pictureBox2.Image");
-            pictureBox2.Location = new Point(58, 74);
-            pictureBox2.Margin = new Padding(2, 2, 2, 2);
+            pictureBox2.Location = new Point(879, 439);
+            pictureBox2.Margin = new Padding(2);
             pictureBox2.Name = "pictureBox2";
-            pictureBox2.Size = new Size(48, 48);
+            pictureBox2.Size = new Size(68, 72);
             pictureBox2.SizeMode = PictureBoxSizeMode.CenterImage;
             pictureBox2.TabIndex = 1;
             pictureBox2.TabStop = false;
@@ -155,21 +153,10 @@
             label3.TabIndex = 9;
             label3.Text = "label3";
             // 
-            // pictureBox3
-            // 
-            pictureBox3.Image = (Image)resources.GetObject("pictureBox3.Image");
-            pictureBox3.Location = new Point(893, 450);
-            pictureBox3.Name = "pictureBox3";
-            pictureBox3.Size = new Size(60, 60);
-            pictureBox3.SizeMode = PictureBoxSizeMode.CenterImage;
-            pictureBox3.TabIndex = 10;
-            pictureBox3.TabStop = false;
-            // 
             // RealEstateScreen
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            Controls.Add(pictureBox3);
             Controls.Add(label3);
             Controls.Add(label1);
             Controls.Add(label2);
@@ -185,7 +172,6 @@
             Size = new Size(1002, 557);
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox3).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -203,6 +189,5 @@
         public PictureBox pictureBox2;
         private Label label1;
         private Label label3;
-        public PictureBox pictureBox3;
     }
 }
