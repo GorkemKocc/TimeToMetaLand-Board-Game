@@ -15,8 +15,8 @@ using System.Windows.Forms;
 using System.Drawing.Text;
 //using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using System.Reflection.Emit;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.ToolBar;
+//using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+//using static System.Windows.Forms.VisualStyles.VisualStyleElement.ToolBar;
 
 namespace MyTimeAtMetaland
 {
