@@ -44,14 +44,17 @@ namespace MyTimeAtMetaland
         public void drawMap()
         {
 
-            foreach (Control control in panel1.Controls)
+            foreach (Button control in panel1.Controls.OfType<Button>().ToList())
             {
-                if (control is Button)
+                if (control.Text == "business" || control.Text == "Field")
                 {
                     panel1.Controls.Remove(control);
                     control.Dispose();
+
                 }
+
             }
+
             using (NpgsqlCommand command = new NpgsqlCommand("SELECT money_quantity FROM users WHERE user_id = @v1", connection))
             {
                 connection.Open();
@@ -71,7 +74,6 @@ namespace MyTimeAtMetaland
                 connection.Close();
             }
 
-
             int gameSizeX = game.gameSizeX,
                 gameSizeY = game.gameSizeY;
             int buttonPlace = 1;
@@ -80,6 +82,7 @@ namespace MyTimeAtMetaland
                 for (int i = 0; i < gameSizeX; i++)
                 {
                     Button plot = new Button();
+                    panel1.Controls.Add(plot);
                     int size;
                     //if (Math.Abs(gameSizeX - gameSizeY) < 4)
                     size = 350 / Math.Min(gameSizeX, gameSizeY);
@@ -137,15 +140,11 @@ namespace MyTimeAtMetaland
                         command.Parameters.AddWithValue("@v1", int.Parse(plot.Name));
                         command.ExecuteNonQuery();
                         var type = command.ExecuteScalar();
-
                         plot.Text = type.ToString();
-
-
                         connection.Close();
-
                     }
                     plot.Click += new EventHandler(land_Click);
-                    panel1.Controls.Add(plot);
+
 
                     buttonPlace++;
                 }
@@ -164,8 +163,6 @@ namespace MyTimeAtMetaland
                 exButton.BackColor = Color.Pink;
             c = 0;
             // exButton.BackColor = Color.Brown;
-
-
             Button button = sender as Button;
             string buttonText = button.Text;
 
@@ -241,10 +238,6 @@ namespace MyTimeAtMetaland
 
 
 
-        private void panel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
 
         private void button1_Click(object sender, EventArgs e)
         {
@@ -336,7 +329,9 @@ namespace MyTimeAtMetaland
             button5.BackColor = Color.Yellow;
             label4.Visible = true;
             textBox4.Visible = true;
-            label4.Text = "Eşya fiyatı";
+            label5.Visible = false;
+            textBox5.Visible = false;
+            label4.Text = "Yemek fiyatı";
             textBox3.Text = adminScreen.textBox14.Text;
             if (button4.BackColor == Color.Yellow || button6.BackColor == Color.Yellow)
             {
@@ -351,6 +346,8 @@ namespace MyTimeAtMetaland
             button4.BackColor = Color.Yellow;
             label4.Visible = true;
             textBox4.Visible = true;
+            label5.Visible = false;
+            textBox5.Visible = false;
             label4.Text = "Eşya fiyatı";
             textBox3.Text = adminScreen.textBox14.Text;
             if (button5.BackColor == Color.Yellow || button6.BackColor == Color.Yellow)
@@ -365,13 +362,17 @@ namespace MyTimeAtMetaland
             button6.BackColor = Color.Yellow;
             label4.Visible = true;
             textBox4.Visible = true;
-            label4.Text = "Eşya fiyatı";
+            label5.Visible = true;
+            textBox5.Visible = true;
+            label4.Text = "Komisyon fiyatı";
             textBox3.Text = adminScreen.textBox14.Text;
+            label5.Text = "Kurulum Maaliyeti";
             if (button5.BackColor == Color.Yellow || button4.BackColor == Color.Yellow)
             {
                 button5.BackColor = Color.White;
                 button4.BackColor = Color.White;
             }
+
         }
         private void button7_Click(object sender, EventArgs e)
         {
@@ -379,20 +380,6 @@ namespace MyTimeAtMetaland
 
             if (button4.BackColor == Color.Yellow)
             {
-                /*   using (NpgsqlCommand command = new NpgsqlCommand("INSERT INTO business (business_type, business_level, business_capacity, business_employee_count, business_income_amount, business_income_rate, business_level_start_date, business_field_id) VALUES (@v1, @v2, @v3, @v4, @v5, @v6, @v7, @v8);", connection))
-                   {
-                       connection.Open();
-                       command.Parameters.AddWithValue("@v1", "shop");
-                       command.Parameters.AddWithValue("@v2", 1);
-                       command.Parameters.AddWithValue("@v3", 3);
-                       command.Parameters.AddWithValue("@v4", 0);
-                       command.Parameters.AddWithValue("@v5", 0);
-                       command.Parameters.AddWithValue("@v6", 0);
-                       command.Parameters.AddWithValue("@v7", new DateTime(2022, 2, 12));
-                       command.Parameters.AddWithValue("@v8", Convert.ToInt32(exButton.Name));
-                       command.ExecuteNonQuery();
-                       connection.Close();
-                   }*/
                 using (NpgsqlCommand command = new NpgsqlCommand("insert into business (business_type, business_level, business_capacity, business_employee_count, business_income_amount, business_income_rate, business_level_start_date, business_field_id)values(@v1, @v2, @v3, @v4, @v5, @v6, @v7, @v8);;", connection))
                 {
                     connection.Open();
@@ -402,7 +389,7 @@ namespace MyTimeAtMetaland
                     command.Parameters.AddWithValue("@v4", 0);
                     command.Parameters.AddWithValue("@v5", 0);
                     command.Parameters.AddWithValue("@v6", 0);
-                    command.Parameters.AddWithValue("@v7", new DateTime(2022, 2, 12));
+                    command.Parameters.AddWithValue("@v7", game.gameDate);
                     command.Parameters.AddWithValue("@v8", Convert.ToInt32(exButton.Name));
                     command.ExecuteNonQuery();
                     connection.Close();
@@ -428,6 +415,88 @@ namespace MyTimeAtMetaland
                 drawMap();
 
             }
+            if (button5.BackColor == Color.Yellow)
+            {
+                using (NpgsqlCommand command = new NpgsqlCommand("insert into business (business_type, business_level, business_capacity, business_employee_count, business_income_amount, business_income_rate, business_level_start_date, business_field_id)values(@v1, @v2, @v3, @v4, @v5, @v6, @v7, @v8);;", connection))
+                {
+                    connection.Open();
+                    command.Parameters.AddWithValue("@v1", "grocery");
+                    command.Parameters.AddWithValue("@v2", 1);
+                    command.Parameters.AddWithValue("@v3", 3);
+                    command.Parameters.AddWithValue("@v4", 0);
+                    command.Parameters.AddWithValue("@v5", 0);
+                    command.Parameters.AddWithValue("@v6", 0);
+                    command.Parameters.AddWithValue("@v7", game.gameDate);
+                    command.Parameters.AddWithValue("@v8", Convert.ToInt32(exButton.Name));
+                    command.ExecuteNonQuery();
+                    connection.Close();
+                }
+
+                using (NpgsqlCommand command = new NpgsqlCommand("insert into grocery (grocery_field_id, grocery_food_price)values (@v1,@v2);", connection))
+                {
+                    connection.Open();
+                    command.Parameters.AddWithValue("@v1", Convert.ToInt32(exButton.Name));
+                    command.Parameters.AddWithValue("@v2", Convert.ToInt32(textBox4.Text));
+                    command.ExecuteNonQuery();
+                    connection.Close();
+                }
+
+                using (NpgsqlCommand command = new NpgsqlCommand("UPDATE field SET field_type = @v1 WHERE field_id = @v2;", connection))
+                {
+                    connection.Open();
+                    command.Parameters.AddWithValue("@v1", "business");
+                    command.Parameters.AddWithValue("@v2", Convert.ToInt32(exButton.Name));
+                    command.ExecuteNonQuery();
+                    connection.Close();
+                }
+                drawMap();
+
+            }
+            if (button6.BackColor == Color.Yellow)
+            {
+                using (NpgsqlCommand command = new NpgsqlCommand("insert into business (business_type, business_level, business_capacity, business_employee_count, business_income_amount, business_income_rate, business_level_start_date, business_field_id)values(@v1, @v2, @v3, @v4, @v5, @v6, @v7, @v8);;", connection))
+                {
+                    connection.Open();
+                    command.Parameters.AddWithValue("@v1", "real_estate");
+                    command.Parameters.AddWithValue("@v2", 1);
+                    command.Parameters.AddWithValue("@v3", 3);
+                    command.Parameters.AddWithValue("@v4", 0);
+                    command.Parameters.AddWithValue("@v5", 0);
+                    command.Parameters.AddWithValue("@v6", 0);
+                    command.Parameters.AddWithValue("@v7", game.gameDate);
+                    command.Parameters.AddWithValue("@v8", Convert.ToInt32(exButton.Name));
+                    command.ExecuteNonQuery();
+                    connection.Close();
+                }
+
+                using (NpgsqlCommand command = new NpgsqlCommand("insert into real_estate (real_estate_field_id, business_price, estate_commission)values (@v1,@v2,@v3);", connection))
+                {
+                    connection.Open();
+                    command.Parameters.AddWithValue("@v1", Convert.ToInt32(exButton.Name));
+                    command.Parameters.AddWithValue("@v2", Convert.ToInt32(textBox5.Text));
+                    command.Parameters.AddWithValue("@v3", Convert.ToInt32(textBox4.Text));
+                    command.ExecuteNonQuery();
+                    connection.Close();
+                }
+
+                using (NpgsqlCommand command = new NpgsqlCommand("UPDATE field SET field_type = @v1 WHERE field_id = @v2;", connection))
+                {
+                    connection.Open();
+                    command.Parameters.AddWithValue("@v1", "business");
+                    command.Parameters.AddWithValue("@v2", Convert.ToInt32(exButton.Name));
+                    command.ExecuteNonQuery();
+                    connection.Close();
+                }
+
+                drawMap();
+            }
+            button5.BackColor = Color.White;
+            button4.BackColor = Color.White;
+            button6.BackColor = Color.White;
+            label4.Visible = false;
+            textBox4.Visible = false;
+            label5.Visible = false;
+            textBox5.Visible = false;
         }
     }
 }

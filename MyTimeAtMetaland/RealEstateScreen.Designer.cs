@@ -47,6 +47,8 @@
             textBox3 = new TextBox();
             label4 = new Label();
             textBox4 = new TextBox();
+            textBox5 = new TextBox();
+            label5 = new Label();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             SuspendLayout();
@@ -54,7 +56,7 @@
             // pictureBox1
             // 
             pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(-1, -1);
+            pictureBox1.Location = new Point(0, 0);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(1000, 555);
             pictureBox1.SizeMode = PictureBoxSizeMode.AutoSize;
@@ -67,7 +69,7 @@
             panel1.Name = "panel1";
             panel1.Size = new Size(859, 380);
             panel1.TabIndex = 1;
-            panel1.Paint += panel1_Paint;
+            // panel1.Paint += panel1_Paint;
             // 
             // button1
             // 
@@ -163,7 +165,7 @@
             // button4
             // 
             button4.Location = new Point(24, 89);
-            button4.Margin = new Padding(2, 2, 2, 2);
+            button4.Margin = new Padding(2);
             button4.Name = "button4";
             button4.Size = new Size(90, 27);
             button4.TabIndex = 10;
@@ -174,7 +176,7 @@
             // button5
             // 
             button5.Location = new Point(24, 121);
-            button5.Margin = new Padding(2, 2, 2, 2);
+            button5.Margin = new Padding(2);
             button5.Name = "button5";
             button5.Size = new Size(90, 27);
             button5.TabIndex = 11;
@@ -185,7 +187,7 @@
             // button6
             // 
             button6.Location = new Point(24, 153);
-            button6.Margin = new Padding(2, 2, 2, 2);
+            button6.Margin = new Padding(2);
             button6.Name = "button6";
             button6.Size = new Size(90, 27);
             button6.TabIndex = 12;
@@ -195,8 +197,8 @@
             // 
             // button7
             // 
-            button7.Location = new Point(24, 287);
-            button7.Margin = new Padding(2, 2, 2, 2);
+            button7.Location = new Point(24, 245);
+            button7.Margin = new Padding(2);
             button7.Name = "button7";
             button7.Size = new Size(90, 37);
             button7.TabIndex = 13;
@@ -206,34 +208,55 @@
             // 
             // textBox3
             // 
-            textBox3.Location = new Point(10, 216);
-            textBox3.Margin = new Padding(2, 2, 2, 2);
+            textBox3.Location = new Point(11, 195);
+            textBox3.Margin = new Padding(2);
             textBox3.Name = "textBox3";
             textBox3.Size = new Size(121, 27);
             textBox3.TabIndex = 14;
             // 
             // label4
             // 
-            label4.AutoSize = true;
-            label4.Location = new Point(44, 359);
+            label4.Location = new Point(18, 355);
             label4.Margin = new Padding(2, 0, 2, 0);
             label4.Name = "label4";
-            label4.Size = new Size(50, 20);
+            label4.Size = new Size(114, 24);
             label4.TabIndex = 15;
             label4.Text = "label4";
             // 
             // textBox4
             // 
             textBox4.Location = new Point(18, 390);
-            textBox4.Margin = new Padding(2, 2, 2, 2);
+            textBox4.Margin = new Padding(2);
             textBox4.Name = "textBox4";
             textBox4.Size = new Size(121, 27);
             textBox4.TabIndex = 16;
+            // 
+            // textBox5
+            // 
+            textBox5.Location = new Point(18, 326);
+            textBox5.Margin = new Padding(2);
+            textBox5.Name = "textBox5";
+            textBox5.Size = new Size(121, 27);
+            textBox5.TabIndex = 18;
+            textBox5.Visible = false;
+            // 
+            // label5
+            // 
+            label5.Location = new Point(9, 289);
+            label5.Margin = new Padding(2, 0, 2, 0);
+            label5.Name = "label5";
+            label5.Size = new Size(130, 30);
+            label5.TabIndex = 17;
+            label5.Text = "Kurulum Maaliyeti";
+            label5.TextAlign = ContentAlignment.MiddleCenter;
+            label5.Visible = false;
             // 
             // RealEstateScreen
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
+            Controls.Add(textBox5);
+            Controls.Add(label5);
             Controls.Add(textBox4);
             Controls.Add(label4);
             Controls.Add(textBox3);
@@ -280,5 +303,7 @@
         private TextBox textBox3;
         private Label label4;
         private TextBox textBox4;
+        private TextBox textBox5;
+        private Label label5;
     }
 }
