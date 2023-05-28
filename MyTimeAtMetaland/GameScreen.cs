@@ -19,6 +19,7 @@ namespace MyTimeAtMetaland
     {
         public Panel panel;
         public DataSet dataSet;
+        public Game game;
         /* public UserControl gameScreen, shopScreen, marketScreen, realEstateScreen;
          public List<Button> land = new List<Button>();
          public int gameSizeX, gameSizeY;*/
@@ -38,6 +39,10 @@ namespace MyTimeAtMetaland
 
         private void GameScreen_Load(object sender, EventArgs e)
         {
+
+        }
+        public void startGame()
+        {
             panel = panel1 as Panel;
             users = ReadData();
             newUsers = ReadData();
@@ -47,6 +52,7 @@ namespace MyTimeAtMetaland
 
         public void show_player()
         {
+            label5.Text = Convert.ToString(game.gameDate);
             if (users.Count > 0)
             {
                 label1.Text = users[0].Item1 + " " + users[0].Item2;
@@ -129,7 +135,9 @@ namespace MyTimeAtMetaland
 
                 users = ReadData();
                 newUsers = ReadData();
+                game.gameDate = game.gameDate.AddDays(1);
                 show_player();
+
             }
         }
 
@@ -178,6 +186,11 @@ namespace MyTimeAtMetaland
         {
             dataSet.Visible = true;
             this.Visible = false;
+        }
+
+        private void label5_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

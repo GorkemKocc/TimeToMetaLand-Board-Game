@@ -336,6 +336,8 @@ namespace MyTimeAtMetaland
             button5.BackColor = Color.Yellow;
             label4.Visible = true;
             textBox4.Visible = true;
+            label4.Text = "Eşya fiyatı";
+            textBox3.Text = adminScreen.textBox14.Text;
             if (button4.BackColor == Color.Yellow || button6.BackColor == Color.Yellow)
             {
                 button4.BackColor = Color.White;
@@ -363,6 +365,8 @@ namespace MyTimeAtMetaland
             button6.BackColor = Color.Yellow;
             label4.Visible = true;
             textBox4.Visible = true;
+            label4.Text = "Eşya fiyatı";
+            textBox3.Text = adminScreen.textBox14.Text;
             if (button5.BackColor == Color.Yellow || button4.BackColor == Color.Yellow)
             {
                 button5.BackColor = Color.White;

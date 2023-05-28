@@ -174,5 +174,24 @@ namespace MyTimeAtMetaland
             gameScreen.Visible = true;
             this.Visible = false;
         }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            button6.Visible = true;
+            pictureBox1.Visible = true;
+            pictureBox1.Dock = DockStyle.Fill;
+
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            pictureBox1.Visible = false;
+            button6.Visible = false;
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

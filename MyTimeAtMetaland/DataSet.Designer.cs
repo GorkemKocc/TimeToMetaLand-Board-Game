@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DataSet));
             dataGridView1 = new DataGridView();
             gameBindingSource = new BindingSource(components);
             comboBox1 = new ComboBox();
@@ -36,8 +37,12 @@
             button2 = new Button();
             button3 = new Button();
             button4 = new Button();
+            button5 = new Button();
+            pictureBox1 = new PictureBox();
+            button6 = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)gameBindingSource).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
             // dataGridView1
@@ -98,7 +103,7 @@
             // button4
             // 
             button4.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point);
-            button4.Location = new Point(920, 334);
+            button4.Location = new Point(876, 412);
             button4.Name = "button4";
             button4.Size = new Size(77, 56);
             button4.TabIndex = 5;
@@ -106,10 +111,48 @@
             button4.UseVisualStyleBackColor = true;
             button4.Click += button4_Click;
             // 
+            // button5
+            // 
+            button5.Location = new Point(920, 335);
+            button5.Name = "button5";
+            button5.Size = new Size(77, 56);
+            button5.TabIndex = 6;
+            button5.Text = "ER";
+            button5.UseVisualStyleBackColor = true;
+            button5.Click += button5_Click;
+            // 
+            // pictureBox1
+            // 
+            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
+            pictureBox1.Location = new Point(0, 3);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(1567, 810);
+            pictureBox1.SizeMode = PictureBoxSizeMode.AutoSize;
+            pictureBox1.TabIndex = 7;
+            pictureBox1.TabStop = false;
+            pictureBox1.Visible = false;
+            pictureBox1.Click += pictureBox1_Click;
+            // 
+            // button6
+            // 
+            button6.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point);
+            button6.Location = new Point(15, 5);
+            button6.Name = "button6";
+            button6.Size = new Size(77, 56);
+            button6.TabIndex = 8;
+            button6.Text = "Çıkış";
+            button6.UseVisualStyleBackColor = true;
+            button6.Visible = false;
+            button6.Click += button6_Click;
+            // 
             // DataSet
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
+            AutoSize = true;
+            Controls.Add(button6);
+            Controls.Add(pictureBox1);
+            Controls.Add(button5);
             Controls.Add(button4);
             Controls.Add(button3);
             Controls.Add(button2);
@@ -117,11 +160,13 @@
             Controls.Add(comboBox1);
             Controls.Add(dataGridView1);
             Name = "DataSet";
-            Size = new Size(1055, 494);
+            Size = new Size(1597, 1376);
             Load += DataSet_Load;
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ((System.ComponentModel.ISupportInitialize)gameBindingSource).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -133,5 +178,8 @@
         private Button button2;
         private Button button3;
         private Button button4;
+        private Button button5;
+        private PictureBox pictureBox1;
+        private Button button6;
     }
 }

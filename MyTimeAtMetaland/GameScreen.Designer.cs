@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GameScreen));
             panel1 = new Panel();
+            button2 = new Button();
             button1 = new Button();
             label4 = new Label();
             label3 = new Label();
@@ -38,7 +39,7 @@
             pictureBox2 = new PictureBox();
             pictureBox1 = new PictureBox();
             label1 = new Label();
-            button2 = new Button();
+            label5 = new Label();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
@@ -47,6 +48,7 @@
             // 
             // panel1
             // 
+            panel1.Controls.Add(label5);
             panel1.Controls.Add(button2);
             panel1.Controls.Add(button1);
             panel1.Controls.Add(label4);
@@ -60,6 +62,16 @@
             panel1.Name = "panel1";
             panel1.Size = new Size(348, 504);
             panel1.TabIndex = 0;
+            // 
+            // button2
+            // 
+            button2.Location = new Point(0, 0);
+            button2.Name = "button2";
+            button2.Size = new Size(80, 50);
+            button2.TabIndex = 8;
+            button2.Text = "Admin";
+            button2.UseVisualStyleBackColor = true;
+            button2.Click += button2_Click;
             // 
             // button1
             // 
@@ -141,15 +153,16 @@
             label1.Text = "Görkem KOÇ";
             label1.TextAlign = ContentAlignment.MiddleCenter;
             // 
-            // button2
+            // label5
             // 
-            button2.Location = new Point(0, 0);
-            button2.Name = "button2";
-            button2.Size = new Size(80, 50);
-            button2.TabIndex = 8;
-            button2.Text = "Admin";
-            button2.UseVisualStyleBackColor = true;
-            button2.Click += button2_Click;
+            label5.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            label5.Location = new Point(213, 0);
+            label5.Name = "label5";
+            label5.Size = new Size(135, 29);
+            label5.TabIndex = 9;
+            label5.Text = "100";
+            label5.TextAlign = ContentAlignment.MiddleCenter;
+            label5.Click += label5_Click;
             // 
             // GameScreen
             // 
@@ -179,5 +192,6 @@
         public Button button1;
         public Label label2;
         public Button button2;
+        public Label label5;
     }
 }
