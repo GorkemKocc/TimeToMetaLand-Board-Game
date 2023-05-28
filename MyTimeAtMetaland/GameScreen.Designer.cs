@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GameScreen));
             panel1 = new Panel();
+            label5 = new Label();
             button2 = new Button();
             button1 = new Button();
             label4 = new Label();
@@ -39,7 +40,8 @@
             pictureBox2 = new PictureBox();
             pictureBox1 = new PictureBox();
             label1 = new Label();
-            label5 = new Label();
+            button3 = new Button();
+            textBox1 = new TextBox();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
@@ -48,6 +50,8 @@
             // 
             // panel1
             // 
+            panel1.Controls.Add(textBox1);
+            panel1.Controls.Add(button3);
             panel1.Controls.Add(label5);
             panel1.Controls.Add(button2);
             panel1.Controls.Add(button1);
@@ -63,6 +67,17 @@
             panel1.Size = new Size(348, 504);
             panel1.TabIndex = 0;
             // 
+            // label5
+            // 
+            label5.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            label5.Location = new Point(213, 0);
+            label5.Name = "label5";
+            label5.Size = new Size(135, 29);
+            label5.TabIndex = 9;
+            label5.Text = "100";
+            label5.TextAlign = ContentAlignment.MiddleCenter;
+            label5.Click += label5_Click;
+            // 
             // button2
             // 
             button2.Location = new Point(0, 0);
@@ -75,7 +90,7 @@
             // 
             // button1
             // 
-            button1.Location = new Point(128, 295);
+            button1.Location = new Point(92, 295);
             button1.Name = "button1";
             button1.Size = new Size(80, 50);
             button1.TabIndex = 7;
@@ -153,16 +168,23 @@
             label1.Text = "Görkem KOÇ";
             label1.TextAlign = ContentAlignment.MiddleCenter;
             // 
-            // label5
+            // button3
             // 
-            label5.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            label5.Location = new Point(213, 0);
-            label5.Name = "label5";
-            label5.Size = new Size(135, 29);
-            label5.TabIndex = 9;
-            label5.Text = "100";
-            label5.TextAlign = ContentAlignment.MiddleCenter;
-            label5.Click += label5_Click;
+            button3.Location = new Point(200, 295);
+            button3.Name = "button3";
+            button3.Size = new Size(80, 50);
+            button3.TabIndex = 10;
+            button3.Text = "Gün Atla";
+            button3.UseVisualStyleBackColor = true;
+            button3.Click += button3_Click;
+            // 
+            // textBox1
+            // 
+            textBox1.Location = new Point(200, 262);
+            textBox1.Name = "textBox1";
+            textBox1.Size = new Size(80, 27);
+            textBox1.TabIndex = 11;
+            textBox1.TextChanged += textBox1_TextChanged;
             // 
             // GameScreen
             // 
@@ -174,6 +196,7 @@
             Size = new Size(958, 853);
             Load += GameScreen_Load;
             panel1.ResumeLayout(false);
+            panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox3).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
@@ -193,5 +216,7 @@
         public Label label2;
         public Button button2;
         public Label label5;
+        public Button button3;
+        private TextBox textBox1;
     }
 }

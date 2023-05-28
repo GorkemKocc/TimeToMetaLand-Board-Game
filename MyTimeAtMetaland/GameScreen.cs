@@ -192,5 +192,31 @@ namespace MyTimeAtMetaland
         {
 
         }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            for (int i = 0; i < Convert.ToInt32(textBox1.Text); i++)
+            {
+                while (newUsers.Count > 0)
+                {
+                    if (newUsers.Count != 1)
+                    { newUsers.RemoveAt(0); }
+                    else
+                    {
+                        show_player();
+                        break;
+                    }
+
+                    show_player();
+
+
+                }
+            }
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

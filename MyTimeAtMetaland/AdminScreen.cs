@@ -50,12 +50,9 @@ namespace MyTimeAtMetaland
             NpgsqlConnection connection = new NpgsqlConnection("server=localHost; port=5432; Database=MetaLand; user ID=postgres; password=admin");
             connection.Open();
 
-            NpgsqlCommand query = new NpgsqlCommand("delete from game", connection);
-            /*query.ExecuteNonQuery();
-            query = new NpgsqlCommand("ALTER SEQUENCE public.game_game_id_seq RESTART WITH 1;", connection);
-            query.ExecuteNonQuery();
-            */
-            query = new NpgsqlCommand("insert into game (initial_food_quantity, initial_item_quantity, initial_money_quantity, daily_food_expense, daily_item_expense, daily_money_expense, map_size, admin_business_salary, business_cost) values (@p1,@p2,@p3,@p4,@p5,@p6,@p7,@p8, @p9)", connection);
+            NpgsqlCommand query;
+
+            query = new NpgsqlCommand("update game set initial_food_quantity = @p1, initial_item_quantity = @p2, initial_money_quantity = @p3, daily_food_expense = @p4, daily_item_expense = @p5, daily_money_expense = @p6, map_size = @p7, admin_business_salary = @p8, business_cost = @p9 where game_id = 1", connection);
             query.Parameters.AddWithValue("@p1", Convert.ToInt32(textBox1.Text));
             query.Parameters.AddWithValue("@p2", Convert.ToInt32(textBox2.Text));
             query.Parameters.AddWithValue("@p3", Convert.ToInt32(textBox3.Text));
