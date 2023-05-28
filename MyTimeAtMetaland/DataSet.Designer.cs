@@ -126,7 +126,7 @@
             pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
             pictureBox1.Location = new Point(3, 442);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(1567, 810);
+            pictureBox1.Size = new Size(1765, 803);
             pictureBox1.SizeMode = PictureBoxSizeMode.AutoSize;
             pictureBox1.TabIndex = 7;
             pictureBox1.TabStop = false;
@@ -160,7 +160,7 @@
             Controls.Add(comboBox1);
             Controls.Add(dataGridView1);
             Name = "DataSet";
-            Size = new Size(1597, 1376);
+            Size = new Size(1771, 1376);
             Load += DataSet_Load;
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ((System.ComponentModel.ISupportInitialize)gameBindingSource).EndInit();
