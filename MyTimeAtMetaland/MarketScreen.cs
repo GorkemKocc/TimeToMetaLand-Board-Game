@@ -16,6 +16,7 @@ namespace MyTimeAtMetaland
     {
         public GameScreen gameScreen;
         internal Game game;
+        public int marketId;
         public List<System.Windows.Forms.Button> land;
         NpgsqlConnection connection = new NpgsqlConnection("server=localHost; port=5432; Database=MetaLand; user ID=postgres; password=admin");
         int amount = 0;
@@ -52,7 +53,7 @@ namespace MyTimeAtMetaland
 
 
             string sqlQuery = "UPDATE users SET money_quantity = money_quantity - @Price WHERE user_id = " + Convert.ToString(gameScreen.users[0].Item3) + ";";
-            string sqlQuery2 = "UPDATE users SET money_quantity = money_quantity - @Price WHERE user_id = " + Convert.ToString(gameScreen.users[0].Item3) + ";";
+            string sqlQuery2 = "UPDATE users SET food_quantity = money_quantity + @Amount WHERE user_id = " + Convert.ToString(gameScreen.users[0].Item3) + ";";
 
             connection.Open();
             NpgsqlCommand query = new NpgsqlCommand(sqlQuery, connection);
@@ -64,6 +65,19 @@ namespace MyTimeAtMetaland
             query2.ExecuteNonQuery();
             connection.Close();
 
+            using (NpgsqlCommand command = new NpgsqlCommand("UPDATE users SET money_quantity = money_quantity + @Price WHERE user_id = @v1", connection))
+            {
+                connection.Open();
+                NpgsqlCommand command2 = new NpgsqlCommand("SELECT field.field_owner_id FROM business JOIN field ON @marketId = field.field_id", connection);
+                command2.Parameters.AddWithValue("@marketId", marketId);
+                var ownerId = command2.ExecuteScalar();
+                command.Parameters.AddWithValue("@v1", ownerId);
+                command.Parameters.AddWithValue("@Price", Convert.ToInt32(textBox1.Text));
+                command2.ExecuteNonQuery();
+                command.ExecuteNonQuery();
+                connection.Close();
+            }
+
             MessageBox.Show("alındı");
 
             game.updatePlayer();
@@ -73,10 +87,11 @@ namespace MyTimeAtMetaland
         {
             amount = comboBox1.SelectedIndex;
 
-            string sqlQuery = "SELECT grocery_food_price FROM grocery WHERE grocery_field_id = 2";
+            string sqlQuery = "SELECT grocery_food_price FROM grocery WHERE grocery_field_id = @v1";
             connection.Open();
             using (NpgsqlCommand command = new NpgsqlCommand(sqlQuery, connection))
             {
+                command.Parameters.AddWithValue("@v1", marketId);
                 using (NpgsqlDataReader reader = command.ExecuteReader())
                 {
                     if (reader.Read())
@@ -86,7 +101,7 @@ namespace MyTimeAtMetaland
                 }
             }
             connection.Close();
-            textBox1.Text = (amount * price).ToString() + "$";
+            textBox1.Text = (amount * price).ToString();
 
         }
     }

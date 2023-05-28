@@ -262,11 +262,13 @@ namespace MyTimeAtMetaland
                 {
                     shopScreen.Visible = true;
                     gameScreen.Visible = false;
+                    shopScreen.shopId = int.Parse(button.Name);
                 }
                 else if (field_type.ToString() == "grocery")
                 {
                     marketScreen.Visible = true;
                     gameScreen.Visible = false;
+                    marketScreen.marketId = int.Parse(button.Name);
                 }
                 else if (field_type.ToString() == "real_estate")
                 {

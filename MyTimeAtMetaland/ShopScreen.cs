@@ -16,6 +16,7 @@ namespace MyTimeAtMetaland
     {
         public GameScreen gameScreen;
         public Game game;
+        public int shopId;
         int amount = 0;
         int price = 0;
         public NpgsqlConnection connection = new NpgsqlConnection("server=localHost; port=5432; Database=MetaLand; user ID=postgres; password=admin");
@@ -36,11 +37,12 @@ namespace MyTimeAtMetaland
         {
             amount = comboBox1.SelectedIndex;
 
-            string sqlQuery = "SELECT shop_item_price FROM shop WHERE shop_field_id = 1";
+            string sqlQuery = "SELECT shop_item_price FROM shop WHERE shop_field_id = @v1";
 
             connection.Open();
             using (NpgsqlCommand command = new NpgsqlCommand(sqlQuery, connection))
             {
+                command.Parameters.AddWithValue("@v1", shopId);
                 using (NpgsqlDataReader reader = command.ExecuteReader())
                 {
                     if (reader.Read())
@@ -50,7 +52,7 @@ namespace MyTimeAtMetaland
                 }
             }
             connection.Close();
-            textBox2.Text = (amount * price).ToString() + "$";
+            textBox2.Text = (amount * price).ToString();
 
         }
 
@@ -69,6 +71,20 @@ namespace MyTimeAtMetaland
             query.ExecuteNonQuery();
             query2.ExecuteNonQuery();
             connection.Close();
+
+            using (NpgsqlCommand command = new NpgsqlCommand("UPDATE users SET money_quantity = money_quantity + @Price WHERE user_id = @v1", connection))
+            {
+                connection.Open();
+                NpgsqlCommand command2 = new NpgsqlCommand("SELECT field.field_owner_id FROM business JOIN field ON @shopId = field.field_id", connection);
+                command2.Parameters.AddWithValue("@shopId", shopId);
+                var ownerId = command2.ExecuteScalar();
+                command.Parameters.AddWithValue("@v1", ownerId);
+                command.Parameters.AddWithValue("@Price", Convert.ToInt32(textBox2.Text));
+                command2.ExecuteNonQuery();
+                command.ExecuteNonQuery();
+                connection.Close();
+            }
+
             MessageBox.Show("alındı");
 
             game.updatePlayer();
