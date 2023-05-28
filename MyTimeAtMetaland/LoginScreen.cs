@@ -30,10 +30,16 @@ namespace MyTimeAtMetaland
         private void button1_Click(object sender, EventArgs e)
         {
             connection.Open();
-            NpgsqlCommand add = new NpgsqlCommand("insert into users(name, surname, password) values(@p1, @p2, @p3)", connection);
+            NpgsqlCommand add = new NpgsqlCommand("insert into users(name, surname, password, user_game_id, food_quantity, item_quantity, money_quantity, game_start_date, alive) values(@p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9)", connection);
             add.Parameters.AddWithValue("@p1", textBox1.Text);
             add.Parameters.AddWithValue("@p2", textBox2.Text);
             add.Parameters.AddWithValue("@p3", textBox3.Text);
+            add.Parameters.AddWithValue("@p4", 1);
+            add.Parameters.AddWithValue("@p5", Convert.ToInt32(adminScreen.textBox1.Text));
+            add.Parameters.AddWithValue("@p6", Convert.ToInt32(adminScreen.textBox2.Text));
+            add.Parameters.AddWithValue("@p7", Convert.ToInt32(adminScreen.textBox3.Text));
+            add.Parameters.AddWithValue("@p8", game.gameDate);
+            add.Parameters.AddWithValue("@p9", true);
             add.ExecuteNonQuery();
             connection.Close();
             MessageBox.Show("eklnedi");
@@ -45,9 +51,10 @@ namespace MyTimeAtMetaland
         private void button2_Click(object sender, EventArgs e)
         {
             //play button
+            game.createMap();
             this.Visible = false;
             gameScreen.Visible = true;
-            game.createMap();
+
         }
 
         private void button3_Click(object sender, EventArgs e)

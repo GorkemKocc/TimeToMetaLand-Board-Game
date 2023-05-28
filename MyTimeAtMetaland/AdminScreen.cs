@@ -47,9 +47,13 @@ namespace MyTimeAtMetaland
         {
             NpgsqlConnection connection = new NpgsqlConnection("server=localHost; port=5432; Database=MetaLand; user ID=postgres; password=admin");
             connection.Open();
-            // eskiyi sil yeniyi kaydet yap AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA///////////////////////
 
-            NpgsqlCommand query = new NpgsqlCommand("insert into game (initial_food_quantity, initial_item_quantity, initial_money_quantity, daily_food_expense, daily_item_expense, daily_money_expense, map_size, admin_business_salary, business_cost) values (@p1,@p2,@p3,@p4,@p5,@p6,@p7,@p8, @p9)", connection);
+            NpgsqlCommand query = new NpgsqlCommand("delete from game", connection);
+            /*query.ExecuteNonQuery();
+            query = new NpgsqlCommand("ALTER SEQUENCE public.game_game_id_seq RESTART WITH 1;", connection);
+            query.ExecuteNonQuery();
+            */
+            query = new NpgsqlCommand("insert into game (initial_food_quantity, initial_item_quantity, initial_money_quantity, daily_food_expense, daily_item_expense, daily_money_expense, map_size, admin_business_salary, business_cost) values (@p1,@p2,@p3,@p4,@p5,@p6,@p7,@p8, @p9)", connection);
             query.Parameters.AddWithValue("@p1", Convert.ToInt32(textBox1.Text));
             query.Parameters.AddWithValue("@p2", Convert.ToInt32(textBox2.Text));
             query.Parameters.AddWithValue("@p3", Convert.ToInt32(textBox3.Text));
@@ -61,7 +65,6 @@ namespace MyTimeAtMetaland
             query.Parameters.AddWithValue("@p9", Convert.ToInt32(textBox14.Text));
             query.ExecuteNonQuery();
 
-            //query.CommandText = "Select ";
             itemPrice = Convert.ToInt32(textBox5.Text);
             foodPrice = Convert.ToInt32(textBox11.Text);
             fieldPrice = Convert.ToInt32(textBox12.Text);
@@ -94,7 +97,7 @@ namespace MyTimeAtMetaland
             else
             {
                 save_rules();
-                MessageBox.Show("eklendi");
+                MessageBox.Show("Eklendi");
             }
 
 
@@ -104,7 +107,7 @@ namespace MyTimeAtMetaland
             //exit
             this.Visible = false;
             loginScreen.Visible = true;
-            resetText();
+            //resetText();
         }
 
         private void textBox_Click(object sender, EventArgs e)

@@ -59,8 +59,8 @@ namespace MyTimeAtMetaland
             }
 
 
-            int gameSizeX = 6,
-                gameSizeY = 5;
+            int gameSizeX = game.gameSizeX,
+                gameSizeY = game.gameSizeY;
             int buttonPlace = 1;
             for (int j = 0; j < gameSizeY; j++)
             {
@@ -83,7 +83,7 @@ namespace MyTimeAtMetaland
                     plot.BackColor = Color.Brown;
                     plot.Name = buttonPlace.ToString();
 
-                    buttonPlace++;
+
 
                     using (NpgsqlCommand command = new NpgsqlCommand("SELECT field_type FROM field WHERE field_id = @v1", connection))
                     {
@@ -100,6 +100,8 @@ namespace MyTimeAtMetaland
                     }
                     plot.Click += new EventHandler(land_Click);
                     panel1.Controls.Add(plot);
+
+                    buttonPlace++;
                 }
             }
             label1.Text = "Fiyat";

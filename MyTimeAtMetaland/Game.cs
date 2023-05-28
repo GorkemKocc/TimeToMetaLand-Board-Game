@@ -29,11 +29,13 @@ namespace MyTimeAtMetaland
         public DateTime gameDate = new DateTime(2023, 1, 1);
         public Game()
         {
-            gameSizeX = 6;
-            gameSizeY = 5;
+
         }
         public void createMap()
         {
+
+            gameSizeX = Convert.ToInt32(adminScreen.textBox7.Text);
+            gameSizeY = Convert.ToInt32(adminScreen.textBox4.Text);
             panel.Visible = true;
             connection.Open();
             query = new NpgsqlCommand("delete from shop", connection);
@@ -80,17 +82,45 @@ namespace MyTimeAtMetaland
                     query.Parameters.AddWithValue("@v4", adminScreen.fieldPrice);
                     query.Parameters.AddWithValue("@v5", false);
                     query.ExecuteNonQuery();
+                    using (NpgsqlCommand command = new NpgsqlCommand("SELECT field_type FROM field WHERE field_id = @v1", connection))
+                    {
+                        command.Parameters.AddWithValue("@v1", int.Parse(plot.Name));
+                        command.ExecuteNonQuery();
+                        var type = command.ExecuteScalar();
+
+                        plot.Text = type.ToString();
+
+
+
+                    }
 
                 }
             }
             panel.Location = new Point(land[gameSizeX - 1].Location.X + land[gameSizeX - 1].Size.Width + 20, 0);
             connection.Close();
             setAdminBusinesses();
+            for (int i = 0; i < land.Count; i++)
+            {
+
+                using (NpgsqlCommand command = new NpgsqlCommand("SELECT field_type FROM field WHERE field_id = @v1", connection))
+                {
+                    connection.Open();
+                    command.Parameters.AddWithValue("@v1", int.Parse(land[i].Name));
+                    command.ExecuteNonQuery();
+                    var type = command.ExecuteScalar();
+
+                    land[i].Text = type.ToString();
+
+                    connection.Close();
+
+                }
+
+
+            }
+
         }
         void setAdminBusinesses()
         {
-            // ADMİN EKRANINDAN GELELN EŞYA YEMEK COMİSYON SET ET ///////////////
-
             using (NpgsqlCommand command = new NpgsqlCommand("UPDATE field SET on_sale = @v1, field_type = 'business', sale_price = @v2 WHERE field_id IN (SELECT field_id FROM field ORDER BY field_id LIMIT 3)", connection))
             {
                 connection.Open();
@@ -166,15 +196,7 @@ namespace MyTimeAtMetaland
             }
         }
 
-        public void updateMap()
-        {
 
-            for (int i = 0; i < land.Count; i++)
-            {
-                land[i].BackColor = Color.Green;
-            }
-
-        }
 
         private void plot_Click(object sender, EventArgs e)
         {

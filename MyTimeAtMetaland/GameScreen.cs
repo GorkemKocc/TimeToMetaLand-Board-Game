@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml.Linq;
 using Npgsql;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 
 namespace MyTimeAtMetaland
@@ -80,6 +81,53 @@ namespace MyTimeAtMetaland
             else
             {
                 users = ReadData();
+
+                foreach (var user in users)
+                {
+                    using (NpgsqlConnection connection = new NpgsqlConnection("server=localHost; port=5432; Database=MetaLand; user ID=postgres; password=admin"))
+                    {
+                        connection.Open();
+                        NpgsqlCommand command = new NpgsqlCommand("SELECT daily_food_expense, daily_money_expense, daily_item_expense FROM game where game_id = 1", connection);
+
+                        using (NpgsqlDataReader reader = command.ExecuteReader())
+                        {
+                            reader.Read();
+                            int dailyFoodExpense = reader.GetInt16(0);
+                            int dailyMoneyExpense = reader.GetInt32(1);
+                            int dailyItemExpense = reader.GetInt32(2);
+                            connection.Close();
+
+                            connection.Open();
+                            NpgsqlCommand query = new NpgsqlCommand("UPDATE users SET food_quantity = food_quantity - @foodExpense, money_quantity = money_quantity - @moneyExpense, item_quantity = item_quantity - @itemExpense where user_id = @user_id", connection);
+                            query.Parameters.AddWithValue("foodExpense", dailyFoodExpense);
+                            query.Parameters.AddWithValue("moneyExpense", dailyMoneyExpense);
+                            query.Parameters.AddWithValue("itemExpense", dailyItemExpense);
+                            query.Parameters.AddWithValue("user_id", user.Item3);
+                            query.ExecuteNonQuery();
+
+                            command = new NpgsqlCommand("SELECT food_quantity, item_quantity FROM users where user_id = @v1", connection);
+                            command.Parameters.AddWithValue("@v1", user.Item3);
+                            using (NpgsqlDataReader reader1 = command.ExecuteReader())
+                            {
+                                reader1.Read();
+                                if (reader1.GetInt32(0) <= 0 || reader1.GetInt32(1) <= 0)
+                                {
+                                    connection.Close();
+                                    connection.Open();
+                                    command = new NpgsqlCommand("UPDATE users SET alive = @v1 WHERE user_id = @v2", connection);
+                                    command.Parameters.AddWithValue("@v1", false);
+                                    command.Parameters.AddWithValue("@v2", user.Item3);
+                                    command.ExecuteNonQuery();
+                                    connection.Close();
+                                }
+                            }
+
+                        }
+                        connection.Close();
+                    }
+                }
+
+                users = ReadData();
                 newUsers = ReadData();
                 show_player();
             }
@@ -96,7 +144,7 @@ namespace MyTimeAtMetaland
                 connection.Open();
 
                 string query = "SELECT column_name FROM table_name";
-                using (NpgsqlCommand command = new NpgsqlCommand("Select name, surname, user_id from users order by user_id OFFSET 1", connection))
+                using (NpgsqlCommand command = new NpgsqlCommand("Select name, surname, user_id, alive from users order by user_id OFFSET 1", connection))
                 {
                     using (NpgsqlDataReader reader = command.ExecuteReader())
                     {
@@ -106,7 +154,8 @@ namespace MyTimeAtMetaland
                             string surname = reader.GetString(1);
                             int id = reader.GetInt32(2);
                             Tuple<string, string, int> tuple = new Tuple<string, string, int>(name, surname, id);
-                            usersData.Add(tuple);
+                            if (reader.GetBoolean(3))
+                                usersData.Add(tuple);
                         }
                     }
                 }
@@ -119,7 +168,7 @@ namespace MyTimeAtMetaland
 
         private void button1_Click(object sender, EventArgs e)
         {
-
+            // tur
             if (newUsers.Count != 1)
                 newUsers.RemoveAt(0);
             show_player();
