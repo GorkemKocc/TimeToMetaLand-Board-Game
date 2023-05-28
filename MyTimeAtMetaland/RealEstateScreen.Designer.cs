@@ -54,8 +54,7 @@
             // pictureBox1
             // 
             pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(4, 4);
-            pictureBox1.Margin = new Padding(4);
+            pictureBox1.Location = new Point(-1, -1);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(1000, 555);
             pictureBox1.SizeMode = PictureBoxSizeMode.AutoSize;
@@ -64,20 +63,18 @@
             // 
             // panel1
             // 
-            panel1.Location = new Point(180, 55);
-            panel1.Margin = new Padding(4);
+            panel1.Location = new Point(144, 44);
             panel1.Name = "panel1";
-            panel1.Size = new Size(1074, 475);
+            panel1.Size = new Size(859, 380);
             panel1.TabIndex = 1;
             panel1.Paint += panel1_Paint;
             // 
             // button1
             // 
             button1.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point);
-            button1.Location = new Point(869, 7);
-            button1.Margin = new Padding(4);
+            button1.Location = new Point(914, 3);
             button1.Name = "button1";
-            button1.Size = new Size(95, 40);
+            button1.Size = new Size(76, 32);
             button1.TabIndex = 2;
             button1.Text = "Çıkış";
             button1.UseVisualStyleBackColor = true;
@@ -85,10 +82,10 @@
             // 
             // button2
             // 
-            button2.Location = new Point(72, 600);
+            button2.Location = new Point(58, 480);
             button2.Margin = new Padding(2);
             button2.Name = "button2";
-            button2.Size = new Size(112, 34);
+            button2.Size = new Size(90, 27);
             button2.TabIndex = 0;
             button2.Text = "satın al";
             button2.UseVisualStyleBackColor = true;
@@ -96,10 +93,10 @@
             // 
             // button3
             // 
-            button3.Location = new Point(234, 600);
+            button3.Location = new Point(187, 480);
             button3.Margin = new Padding(2);
             button3.Name = "button3";
-            button3.Size = new Size(112, 34);
+            button3.Size = new Size(90, 27);
             button3.TabIndex = 3;
             button3.Text = "kirala";
             button3.UseVisualStyleBackColor = true;
@@ -107,27 +104,26 @@
             // 
             // textBox1
             // 
-            textBox1.Location = new Point(556, 578);
+            textBox1.Location = new Point(445, 462);
             textBox1.Margin = new Padding(2);
             textBox1.Name = "textBox1";
-            textBox1.Size = new Size(209, 31);
+            textBox1.Size = new Size(168, 27);
             textBox1.TabIndex = 4;
             // 
             // textBox2
             // 
-            textBox2.Location = new Point(556, 632);
+            textBox2.Location = new Point(445, 506);
             textBox2.Margin = new Padding(2);
             textBox2.Name = "textBox2";
-            textBox2.Size = new Size(209, 31);
+            textBox2.Size = new Size(168, 27);
             textBox2.TabIndex = 5;
             // 
             // label2
             // 
             label2.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            label2.Location = new Point(861, 615);
-            label2.Margin = new Padding(4, 0, 4, 0);
+            label2.Location = new Point(879, 506);
             label2.Name = "label2";
-            label2.Size = new Size(101, 25);
+            label2.Size = new Size(81, 20);
             label2.TabIndex = 7;
             label2.Text = "100";
             label2.TextAlign = ContentAlignment.MiddleCenter;
@@ -136,10 +132,10 @@
             // pictureBox2
             // 
             pictureBox2.Image = (Image)resources.GetObject("pictureBox2.Image");
-            pictureBox2.Location = new Point(869, 536);
+            pictureBox2.Location = new Point(885, 440);
             pictureBox2.Margin = new Padding(2);
             pictureBox2.Name = "pictureBox2";
-            pictureBox2.Size = new Size(85, 90);
+            pictureBox2.Size = new Size(68, 72);
             pictureBox2.SizeMode = PictureBoxSizeMode.CenterImage;
             pictureBox2.TabIndex = 1;
             pictureBox2.TabStop = false;
@@ -147,28 +143,29 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(450, 581);
+            label1.Location = new Point(360, 465);
             label1.Margin = new Padding(2, 0, 2, 0);
             label1.Name = "label1";
-            label1.Size = new Size(59, 25);
+            label1.Size = new Size(50, 20);
             label1.TabIndex = 8;
             label1.Text = "label1";
             // 
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(450, 636);
+            label3.Location = new Point(360, 509);
             label3.Margin = new Padding(2, 0, 2, 0);
             label3.Name = "label3";
-            label3.Size = new Size(59, 25);
+            label3.Size = new Size(50, 20);
             label3.TabIndex = 9;
             label3.Text = "label3";
             // 
             // button4
             // 
-            button4.Location = new Point(30, 91);
+            button4.Location = new Point(24, 89);
+            button4.Margin = new Padding(2, 2, 2, 2);
             button4.Name = "button4";
-            button4.Size = new Size(112, 34);
+            button4.Size = new Size(90, 27);
             button4.TabIndex = 10;
             button4.Text = "Mağaza";
             button4.UseVisualStyleBackColor = true;
@@ -176,9 +173,10 @@
             // 
             // button5
             // 
-            button5.Location = new Point(30, 131);
+            button5.Location = new Point(24, 121);
+            button5.Margin = new Padding(2, 2, 2, 2);
             button5.Name = "button5";
-            button5.Size = new Size(112, 34);
+            button5.Size = new Size(90, 27);
             button5.TabIndex = 11;
             button5.Text = "Market";
             button5.UseVisualStyleBackColor = true;
@@ -186,9 +184,10 @@
             // 
             // button6
             // 
-            button6.Location = new Point(30, 171);
+            button6.Location = new Point(24, 153);
+            button6.Margin = new Padding(2, 2, 2, 2);
             button6.Name = "button6";
-            button6.Size = new Size(112, 34);
+            button6.Size = new Size(90, 27);
             button6.TabIndex = 12;
             button6.Text = "Emlak";
             button6.UseVisualStyleBackColor = true;
@@ -196,9 +195,10 @@
             // 
             // button7
             // 
-            button7.Location = new Point(30, 359);
+            button7.Location = new Point(24, 287);
+            button7.Margin = new Padding(2, 2, 2, 2);
             button7.Name = "button7";
-            button7.Size = new Size(112, 46);
+            button7.Size = new Size(90, 37);
             button7.TabIndex = 13;
             button7.Text = "Kur";
             button7.UseVisualStyleBackColor = true;
@@ -206,30 +206,33 @@
             // 
             // textBox3
             // 
-            textBox3.Location = new Point(13, 270);
+            textBox3.Location = new Point(10, 216);
+            textBox3.Margin = new Padding(2, 2, 2, 2);
             textBox3.Name = "textBox3";
-            textBox3.Size = new Size(150, 31);
+            textBox3.Size = new Size(121, 27);
             textBox3.TabIndex = 14;
             // 
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(55, 449);
+            label4.Location = new Point(44, 359);
+            label4.Margin = new Padding(2, 0, 2, 0);
             label4.Name = "label4";
-            label4.Size = new Size(59, 25);
+            label4.Size = new Size(50, 20);
             label4.TabIndex = 15;
             label4.Text = "label4";
             // 
             // textBox4
             // 
-            textBox4.Location = new Point(23, 488);
+            textBox4.Location = new Point(18, 390);
+            textBox4.Margin = new Padding(2, 2, 2, 2);
             textBox4.Name = "textBox4";
-            textBox4.Size = new Size(150, 31);
+            textBox4.Size = new Size(121, 27);
             textBox4.TabIndex = 16;
             // 
             // RealEstateScreen
             // 
-            AutoScaleDimensions = new SizeF(10F, 25F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             Controls.Add(textBox4);
             Controls.Add(label4);
@@ -249,9 +252,8 @@
             Controls.Add(button1);
             Controls.Add(panel1);
             Controls.Add(pictureBox1);
-            Margin = new Padding(4);
             Name = "RealEstateScreen";
-            Size = new Size(1252, 696);
+            Size = new Size(999, 557);
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             ResumeLayout(false);
