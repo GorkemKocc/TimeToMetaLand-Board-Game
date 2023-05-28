@@ -317,67 +317,82 @@ namespace MyTimeAtMetaland
         private void button2_Click(object sender, EventArgs e)
         {
             //satÄ±n al
+            int fieldCount;
+            using (NpgsqlCommand command = new NpgsqlCommand("SELECT COUNT(*) FROM field WHERE field_type = 'Field' AND field_owner_id = @userId", connection))
+            {
+                connection.Open();
+                command.Parameters.AddWithValue("userId", gameScreen.newUsers[0].Item3);
 
-            using (NpgsqlCommand command = new NpgsqlCommand("UPDATE users SET money_quantity = money_quantity - @Price WHERE user_id = @v1", connection))
-            {
-                connection.Open();
-                command.Parameters.AddWithValue("@v1", gameScreen.newUsers[0].Item3);
-                command.Parameters.AddWithValue("@Price", (Convert.ToInt32(textBox1.Text) + Convert.ToInt32(textBox2.Text)));
-                command.ExecuteNonQuery();
+                fieldCount = Convert.ToInt32(command.ExecuteScalar());
                 connection.Close();
-                game.updatePlayer();
-            }
-            using (NpgsqlCommand command = new NpgsqlCommand("SELECT money_quantity FROM users WHERE user_id = @v1", connection))
-            {
-                connection.Open();
-                command.Parameters.AddWithValue("@v1", gameScreen.newUsers[0].Item3);
-                var money = command.ExecuteScalar();
-                label2.Text = money.ToString();
-                command.ExecuteNonQuery();
-                connection.Close();
-            }
-            using (NpgsqlCommand command = new NpgsqlCommand("UPDATE users SET money_quantity = money_quantity + @Price WHERE user_id = @v1", connection))
-            {
-                connection.Open();
-                NpgsqlCommand command2 = new NpgsqlCommand("SELECT field_owner_id FROM field WHERE field_id = @v2", connection);
-                command2.Parameters.AddWithValue("@v2", Convert.ToInt32(exButton.Name));
-                var ownerId = command2.ExecuteScalar();
-                command.Parameters.AddWithValue("@v1", Convert.ToInt32(ownerId));
-                command.Parameters.AddWithValue("@Price", Convert.ToInt32(textBox1.Text) - Convert.ToInt32(textBox2.Text));
-                command2.ExecuteNonQuery();
-                command.ExecuteNonQuery();
-                connection.Close();
-                game.updatePlayer();
-            }
-            using (NpgsqlCommand command = new NpgsqlCommand("UPDATE users SET money_quantity = money_quantity + @Price WHERE user_id = @v1", connection))
-            {
-                connection.Open();
-                NpgsqlCommand command2 = new NpgsqlCommand("SELECT field.field_owner_id FROM business JOIN field ON @estateId = field.field_id", connection);
-                command2.Parameters.AddWithValue("@estateId", estateId);
-                var ownerId = command2.ExecuteScalar();
-                command.Parameters.AddWithValue("@v1", Convert.ToInt32(ownerId));
-                command.Parameters.AddWithValue("@Price", Convert.ToInt32(textBox2.Text));
-                command2.ExecuteNonQuery();
-                command.ExecuteNonQuery();
-                connection.Close();
-                game.updatePlayer();
-            }
-            using (NpgsqlCommand command = new NpgsqlCommand("UPDATE field SET field_owner_id = @v1, on_sale = @v3, rental = @v4, sale_date = @v5, estate_transaction = @v6, traded_real_estate_field_id = @v7 WHERE field_id = @v2", connection))
-            {
-                connection.Open();
-                command.Parameters.AddWithValue("@v1", gameScreen.newUsers[0].Item3);
-                command.Parameters.AddWithValue("@v2", Convert.ToInt32(exButton.Name));
-                command.Parameters.AddWithValue("@v3", false);
-                command.Parameters.AddWithValue("@v4", false);
-                command.Parameters.AddWithValue("@v5", game.gameDate);
-                command.Parameters.AddWithValue("@v6", "sale");
-                command.Parameters.AddWithValue("@v7", estateId);
-                command.ExecuteNonQuery();
-                connection.Close();
-                game.updatePlayer();
-                drawMap();
-            }
 
+            }
+            if (fieldCount < 2)
+            {
+                using (NpgsqlCommand command = new NpgsqlCommand("UPDATE users SET money_quantity = money_quantity - @Price WHERE user_id = @v1", connection))
+                {
+                    connection.Open();
+                    command.Parameters.AddWithValue("@v1", gameScreen.newUsers[0].Item3);
+                    command.Parameters.AddWithValue("@Price", (Convert.ToInt32(textBox1.Text) + Convert.ToInt32(textBox2.Text)));
+                    command.ExecuteNonQuery();
+                    connection.Close();
+                    game.updatePlayer();
+                }
+                using (NpgsqlCommand command = new NpgsqlCommand("SELECT money_quantity FROM users WHERE user_id = @v1", connection))
+                {
+                    connection.Open();
+                    command.Parameters.AddWithValue("@v1", gameScreen.newUsers[0].Item3);
+                    var money = command.ExecuteScalar();
+                    label2.Text = money.ToString();
+                    command.ExecuteNonQuery();
+                    connection.Close();
+                }
+                using (NpgsqlCommand command = new NpgsqlCommand("UPDATE users SET money_quantity = money_quantity + @Price WHERE user_id = @v1", connection))
+                {
+                    connection.Open();
+                    NpgsqlCommand command2 = new NpgsqlCommand("SELECT field_owner_id FROM field WHERE field_id = @v2", connection);
+                    command2.Parameters.AddWithValue("@v2", Convert.ToInt32(exButton.Name));
+                    var ownerId = command2.ExecuteScalar();
+                    command.Parameters.AddWithValue("@v1", Convert.ToInt32(ownerId));
+                    command.Parameters.AddWithValue("@Price", Convert.ToInt32(textBox1.Text) - Convert.ToInt32(textBox2.Text));
+                    command2.ExecuteNonQuery();
+                    command.ExecuteNonQuery();
+                    connection.Close();
+                    game.updatePlayer();
+                }
+                using (NpgsqlCommand command = new NpgsqlCommand("UPDATE users SET money_quantity = money_quantity + @Price WHERE user_id = @v1", connection))
+                {
+                    connection.Open();
+                    NpgsqlCommand command2 = new NpgsqlCommand("SELECT field.field_owner_id FROM business JOIN field ON @estateId = field.field_id", connection);
+                    command2.Parameters.AddWithValue("@estateId", estateId);
+                    var ownerId = command2.ExecuteScalar();
+                    command.Parameters.AddWithValue("@v1", Convert.ToInt32(ownerId));
+                    command.Parameters.AddWithValue("@Price", Convert.ToInt32(textBox2.Text));
+                    command2.ExecuteNonQuery();
+                    command.ExecuteNonQuery();
+                    connection.Close();
+                    game.updatePlayer();
+                }
+                using (NpgsqlCommand command = new NpgsqlCommand("UPDATE field SET field_owner_id = @v1, on_sale = @v3, rental = @v4, sale_date = @v5, estate_transaction = @v6, traded_real_estate_field_id = @v7 WHERE field_id = @v2", connection))
+                {
+                    connection.Open();
+                    command.Parameters.AddWithValue("@v1", gameScreen.newUsers[0].Item3);
+                    command.Parameters.AddWithValue("@v2", Convert.ToInt32(exButton.Name));
+                    command.Parameters.AddWithValue("@v3", false);
+                    command.Parameters.AddWithValue("@v4", false);
+                    command.Parameters.AddWithValue("@v5", game.gameDate);
+                    command.Parameters.AddWithValue("@v6", "sale");
+                    command.Parameters.AddWithValue("@v7", estateId);
+                    command.ExecuteNonQuery();
+                    connection.Close();
+                    game.updatePlayer();
+                    drawMap();
+                }
+            }
+            else
+            {
+                MessageBox.Show("Maksimum Arsa Sahipliğine Ulaşıldı");
+            }
         }
 
         private void label2_Click(object sender, EventArgs e)
