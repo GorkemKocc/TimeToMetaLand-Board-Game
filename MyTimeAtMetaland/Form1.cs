@@ -50,6 +50,7 @@ namespace MyTimeAtMetaland
             adminScreen1.loginScreen = loginScreen1;
             gameScreen1.dataSet = dataSet1;
             dataSet1.gameScreen = gameScreen1;
+            realEstateScreen1.adminScreen = adminScreen1;
         }
 
 
