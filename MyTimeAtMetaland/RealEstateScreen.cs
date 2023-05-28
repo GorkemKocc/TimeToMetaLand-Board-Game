@@ -84,10 +84,7 @@ namespace MyTimeAtMetaland
                     Button plot = new Button();
                     panel1.Controls.Add(plot);
                     int size;
-                    //if (Math.Abs(gameSizeX - gameSizeY) < 4)
                     size = 350 / Math.Min(gameSizeX, gameSizeY);
-                    // else
-                    // size = 350 / Math.Min(gameSizeX, gameSizeY);
 
                     plot.Size = new Size(size, size);
 
@@ -116,6 +113,7 @@ namespace MyTimeAtMetaland
                     query2.ExecuteNonQuery();
                     var rental = query2.ExecuteScalar();
                     bool boolrental = false;
+
                     if (rental != null && rental != DBNull.Value)
                     {
                         boolrental = Convert.ToBoolean(rental);
@@ -134,13 +132,58 @@ namespace MyTimeAtMetaland
                     }
                     connection.Close();
 
+                    using (NpgsqlCommand command = new NpgsqlCommand("SELECT field_id FROM field WHERE field_owner_id = @v1", connection))
+                    {
+                        connection.Open();
+                        command.Parameters.AddWithValue("@v1", gameScreen.newUsers[0].Item3);
+                        var field_id = command.ExecuteScalar();
+                        if (field_id == plot.Name)
+                        {
+                            plot.BackColor = Color.Yellow;
+                        }
+                        connection.Close();
+                    }
                     using (NpgsqlCommand command = new NpgsqlCommand("SELECT field_type FROM field WHERE field_id = @v1", connection))
                     {
                         connection.Open();
                         command.Parameters.AddWithValue("@v1", int.Parse(plot.Name));
                         command.ExecuteNonQuery();
                         var type = command.ExecuteScalar();
-                        plot.Text = type.ToString();
+                        if (type.ToString() == "business")
+                        {
+                            using (NpgsqlCommand command1 = new NpgsqlCommand("SELECT business_type FROM business WHERE business_field_id = @v1", connection))
+                            {
+
+                                command1.Parameters.AddWithValue("@v1", int.Parse(plot.Name));
+                                type = command1.ExecuteScalar();
+                                plot.Text = type.ToString();
+
+                            }
+                        }
+                        else
+                        {
+                            plot.Text = type.ToString();
+
+                        }
+                        connection.Close();
+                    }
+                    using (NpgsqlCommand command1 = new NpgsqlCommand("SELECT field_id FROM field WHERE field_owner_id = @v1", connection))
+                    {
+                        connection.Open();
+                        command1.Parameters.AddWithValue("@v1", gameScreen.newUsers[0].Item3);
+
+                        using (NpgsqlDataReader reader = command1.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                string field_id = reader["field_id"].ToString();
+                                if (field_id == plot.Name)
+                                {
+                                    plot.BackColor = Color.Yellow;
+                                }
+                            }
+                        }
+
                         connection.Close();
                     }
                     plot.Click += new EventHandler(land_Click);
@@ -162,7 +205,7 @@ namespace MyTimeAtMetaland
             if (c == 2)
                 exButton.BackColor = Color.Pink;
             c = 0;
-            // exButton.BackColor = Color.Brown;
+
             Button button = sender as Button;
             string buttonText = button.Text;
 
@@ -192,7 +235,6 @@ namespace MyTimeAtMetaland
                     boolonSale = Convert.ToBoolean(onSale);
                 }
 
-
                 NpgsqlCommand query2 = new NpgsqlCommand("SELECT rental FROM field WHERE field_id = @v4;", connection);
                 query2.Parameters.AddWithValue("@v4", Convert.ToInt32(button.Name));
                 query2.ExecuteNonQuery();
@@ -221,27 +263,35 @@ namespace MyTimeAtMetaland
                     button3.Enabled = false;
                     exButton.BackColor = Color.Gray;
                 }
-
-
-
-
                 command.ExecuteNonQuery();
+                using (NpgsqlCommand command1 = new NpgsqlCommand("SELECT field_id FROM field WHERE field_owner_id = @v1", connection))
+                {
+
+                    command1.Parameters.AddWithValue("@v1", gameScreen.newUsers[0].Item3);
+
+                    using (NpgsqlDataReader reader = command1.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            string field_id = reader["field_id"].ToString();
+                            if (field_id == exButton.Name)
+                            {
+                                exButton.BackColor = Color.Yellow;
+                            }
+                        }
+                    }
 
 
+                }
             }
             connection.Close();
 
-
-
-
         }
-
-
-
 
         private void button1_Click(object sender, EventArgs e)
         {
             this.Visible = false;
+            game.updateMap();
             gameScreen.Visible = true;
         }
 
@@ -319,7 +369,6 @@ namespace MyTimeAtMetaland
                 drawMap();
             }
 
-
         }
 
         private void label2_Click(object sender, EventArgs e)
@@ -345,7 +394,6 @@ namespace MyTimeAtMetaland
         private void button4_Click(object sender, EventArgs e)
         {
             //shop
-            //int cost = adminScreen.businessCost;
             button4.BackColor = Color.Yellow;
             label4.Visible = true;
             textBox4.Visible = true;
@@ -381,7 +429,7 @@ namespace MyTimeAtMetaland
         {
             //kur
 
-            if (button4.BackColor == Color.Yellow)
+            if (button4.BackColor == Color.Yellow && exButton.BackColor == Color.Yellow)
             {
                 using (NpgsqlCommand command = new NpgsqlCommand("insert into business (business_type, business_level, business_capacity, business_employee_count, business_income_amount, business_income_rate, business_level_start_date, business_field_id)values(@v1, @v2, @v3, @v4, @v5, @v6, @v7, @v8);;", connection))
                 {
@@ -418,7 +466,7 @@ namespace MyTimeAtMetaland
                 drawMap();
 
             }
-            if (button5.BackColor == Color.Yellow)
+            else if (button5.BackColor == Color.Yellow && exButton.BackColor == Color.Yellow)
             {
                 using (NpgsqlCommand command = new NpgsqlCommand("insert into business (business_type, business_level, business_capacity, business_employee_count, business_income_amount, business_income_rate, business_level_start_date, business_field_id)values(@v1, @v2, @v3, @v4, @v5, @v6, @v7, @v8);;", connection))
                 {
@@ -455,7 +503,7 @@ namespace MyTimeAtMetaland
                 drawMap();
 
             }
-            if (button6.BackColor == Color.Yellow)
+            else if (button6.BackColor == Color.Yellow && exButton.BackColor == Color.Yellow)
             {
                 using (NpgsqlCommand command = new NpgsqlCommand("insert into business (business_type, business_level, business_capacity, business_employee_count, business_income_amount, business_income_rate, business_level_start_date, business_field_id)values(@v1, @v2, @v3, @v4, @v5, @v6, @v7, @v8);;", connection))
                 {
@@ -493,6 +541,10 @@ namespace MyTimeAtMetaland
 
                 drawMap();
             }
+            else
+            {
+                MessageBox.Show("Arsa Sizin Değil");
+            }
             button5.BackColor = Color.White;
             button4.BackColor = Color.White;
             button6.BackColor = Color.White;
@@ -501,5 +553,6 @@ namespace MyTimeAtMetaland
             label5.Visible = false;
             textBox5.Visible = false;
         }
+
     }
 }

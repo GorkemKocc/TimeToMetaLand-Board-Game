@@ -19,6 +19,7 @@ namespace MyTimeAtMetaland
         DataTable dataTable;
         NpgsqlConnection connection = new NpgsqlConnection("server=localHost; port=5432; Database=MetaLand; user ID=postgres; password=admin");
         public GameScreen gameScreen;
+        public Game game;
         public DataSet()
         {
             InitializeComponent();
@@ -171,6 +172,8 @@ namespace MyTimeAtMetaland
 
         private void button4_Click(object sender, EventArgs e)
         {
+            //exit
+            game.updatePlayer();
             gameScreen.Visible = true;
             this.Visible = false;
         }

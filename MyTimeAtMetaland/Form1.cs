@@ -28,7 +28,7 @@ namespace MyTimeAtMetaland
             game.panel = gameScreen1.panel;
             game.adminScreen = adminScreen1;
 
-
+            dataSet1.game = game;
 
             marketScreen1.land = game.land;
             marketScreen1.game = game;

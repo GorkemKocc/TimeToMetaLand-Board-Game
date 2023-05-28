@@ -90,8 +90,6 @@ namespace MyTimeAtMetaland
 
                         plot.Text = type.ToString();
 
-
-
                     }
 
                 }
@@ -99,25 +97,71 @@ namespace MyTimeAtMetaland
             panel.Location = new Point(land[gameSizeX - 1].Location.X + land[gameSizeX - 1].Size.Width + 20, 0);
             connection.Close();
             setAdminBusinesses();
-            for (int i = 0; i < land.Count; i++)
+            updateMap();
+        }
+
+
+        public void updateMap()
+        {
+            foreach (Button button in gameScreen.Controls.OfType<Button>().ToList())
             {
-
-                using (NpgsqlCommand command = new NpgsqlCommand("SELECT field_type FROM field WHERE field_id = @v1", connection))
+                if (button.Text == "Field" || button.Text == "business")
                 {
-                    connection.Open();
-                    command.Parameters.AddWithValue("@v1", int.Parse(land[i].Name));
-                    command.ExecuteNonQuery();
-                    var type = command.ExecuteScalar();
-
-                    land[i].Text = type.ToString();
-
-                    connection.Close();
-
+                    gameScreen.Controls.Remove(button);
+                    button.Dispose();
                 }
-
-
             }
 
+            int buttonPlace = 1;
+            for (int j = 0; j < gameSizeY; j++)
+            {
+                for (int i = 0; i < gameSizeX; i++)
+                {
+                    Button plot = new Button();
+                    int size = 700 / Math.Max(gameSizeX, gameSizeY);
+                    plot.Size = new Size(size, size);
+                    plot.Location = new Point(size * i + 80, size * j + 50);
+                    plot.BackColor = Color.Brown;
+                    plot.Click += new EventHandler(plot_Click);
+                    gameScreen.Controls.Add(plot);
+                    land.Add(plot);
+
+                    plot.BackColor = Color.Brown;
+                    plot.Name = buttonPlace.ToString();
+
+
+
+                    using (NpgsqlCommand command = new NpgsqlCommand("SELECT field_type FROM field WHERE field_id = @v1", connection))
+                    {
+                        connection.Open();
+                        command.Parameters.AddWithValue("@v1", int.Parse(plot.Name));
+                        command.ExecuteNonQuery();
+                        var type = command.ExecuteScalar();
+                        connection.Close();
+                        if (type.ToString() == "business")
+                        {
+                            using (NpgsqlCommand command1 = new NpgsqlCommand("SELECT business_type FROM business WHERE business_field_id = @v1", connection))
+                            {
+                                connection.Open();
+                                command1.Parameters.AddWithValue("@v1", int.Parse(plot.Name));
+                                type = command1.ExecuteScalar();
+                                plot.Text = type.ToString();
+                                connection.Close();
+                            }
+                        }
+                        else
+                        {
+                            plot.Text = type.ToString();
+
+                        }
+
+                    }
+                    plot.Click += new EventHandler(plot_Click);
+
+
+                    buttonPlace++;
+                }
+            }
         }
         void setAdminBusinesses()
         {
@@ -287,4 +331,5 @@ namespace MyTimeAtMetaland
 
         }
     }
+
 }
