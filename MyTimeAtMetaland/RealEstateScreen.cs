@@ -303,13 +303,16 @@ namespace MyTimeAtMetaland
                 connection.Close();
                 game.updatePlayer();
             }
-            using (NpgsqlCommand command = new NpgsqlCommand("UPDATE field SET field_owner_id = @v1, on_sale = @v3, rental = @v4 WHERE field_id = @v2", connection))
+            using (NpgsqlCommand command = new NpgsqlCommand("UPDATE field SET field_owner_id = @v1, on_sale = @v3, rental = @v4, sale_date = @v5, estate_transaction = @v6, traded_real_estate_field_id = @v7 WHERE field_id = @v2", connection))
             {
                 connection.Open();
                 command.Parameters.AddWithValue("@v1", gameScreen.newUsers[0].Item3);
                 command.Parameters.AddWithValue("@v2", Convert.ToInt32(exButton.Name));
                 command.Parameters.AddWithValue("@v3", false);
                 command.Parameters.AddWithValue("@v4", false);
+                command.Parameters.AddWithValue("@v5", game.gameDate);
+                command.Parameters.AddWithValue("@v6", "sale");
+                command.Parameters.AddWithValue("@v7", estateId);
                 command.ExecuteNonQuery();
                 connection.Close();
                 game.updatePlayer();
