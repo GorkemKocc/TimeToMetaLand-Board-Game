@@ -15,7 +15,9 @@ namespace MyTimeAtMetaland
     public partial class AdminScreen : UserControl
     {
         public LoginScreen loginScreen;
-        public int foodPrice, itemPrice, fieldPrice, estateCommission;
+        public RealEstateScreen realEstateScreen;
+
+        public int foodPrice, itemPrice, fieldPrice, estateCommission, businessCost;
         public AdminScreen()
         {
             InitializeComponent();
@@ -97,6 +99,7 @@ namespace MyTimeAtMetaland
             else
             {
                 save_rules();
+                businessCost = Convert.ToInt32(textBox14.Text);
                 MessageBox.Show("Eklendi");
             }
 
