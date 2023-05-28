@@ -49,6 +49,8 @@
             textBox4 = new TextBox();
             textBox5 = new TextBox();
             label5 = new Label();
+            button8 = new Button();
+            button9 = new Button();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             SuspendLayout();
@@ -69,7 +71,6 @@
             panel1.Name = "panel1";
             panel1.Size = new Size(859, 380);
             panel1.TabIndex = 1;
-            // panel1.Paint += panel1_Paint;
             // 
             // button1
             // 
@@ -251,10 +252,34 @@
             label5.TextAlign = ContentAlignment.MiddleCenter;
             label5.Visible = false;
             // 
+            // button8
+            // 
+            button8.Location = new Point(670, 448);
+            button8.Margin = new Padding(2);
+            button8.Name = "button8";
+            button8.Size = new Size(90, 37);
+            button8.TabIndex = 19;
+            button8.Text = "Sat";
+            button8.UseVisualStyleBackColor = true;
+            button8.Click += button8_Click;
+            // 
+            // button9
+            // 
+            button9.Location = new Point(670, 496);
+            button9.Margin = new Padding(2);
+            button9.Name = "button9";
+            button9.Size = new Size(90, 37);
+            button9.TabIndex = 20;
+            button9.Text = "Kiraya Ver";
+            button9.UseVisualStyleBackColor = true;
+            button9.Click += button9_Click;
+            // 
             // RealEstateScreen
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
+            Controls.Add(button9);
+            Controls.Add(button8);
             Controls.Add(textBox5);
             Controls.Add(label5);
             Controls.Add(textBox4);
@@ -305,5 +330,7 @@
         private TextBox textBox4;
         private TextBox textBox5;
         private Label label5;
+        private Button button8;
+        private Button button9;
     }
 }

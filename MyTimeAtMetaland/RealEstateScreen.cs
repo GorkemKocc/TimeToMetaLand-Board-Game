@@ -212,6 +212,15 @@ namespace MyTimeAtMetaland
             exButton = button;
 
             button.BackColor = Color.Green;
+            using (NpgsqlCommand query3 = new NpgsqlCommand("SELECT estate_commission FROM real_estate WHERE real_estate_field_id = @v3;", connection))
+            {
+                connection.Open();
+                query3.Parameters.AddWithValue("@v3", estateId);
+                query3.ExecuteNonQuery();
+                var commission = query3.ExecuteScalar();
+                Commission = Convert.ToInt32(commission);
+                connection.Close();
+            }
             connection.Open();
 
 
@@ -554,5 +563,32 @@ namespace MyTimeAtMetaland
             textBox5.Visible = false;
         }
 
+        private void button8_Click(object sender, EventArgs e)
+        {
+            //sat
+            if (exButton.BackColor == Color.Yellow)
+            {
+                using (NpgsqlCommand command = new NpgsqlCommand("UPDATE field SET on_sale = @v2, sale_price = @v3 WHERE field_id = @v1", connection))
+                {
+                    connection.Open();
+                    command.Parameters.AddWithValue("@v1", Convert.ToInt32(exButton.Name));
+                    command.Parameters.AddWithValue("@v2", true);
+                    command.Parameters.AddWithValue("@v3", Convert.ToInt32(textBox1.Text));
+                    command.ExecuteNonQuery();
+                    connection.Close();
+                    game.updatePlayer();
+                    drawMap();
+                }
+            }
+            else
+            {
+                MessageBox.Show("Arsa Sizin Değil");
+            }
+        }
+
+        private void button9_Click(object sender, EventArgs e)
+        {
+            //kirala
+        }
     }
 }
