@@ -41,7 +41,6 @@ namespace MyTimeAtMetaland
             //exit
             comboBox1.SelectedIndex = 0;
             this.Visible = false;
-            //game.updateMap();
             gameScreen.Visible = true;
 
 

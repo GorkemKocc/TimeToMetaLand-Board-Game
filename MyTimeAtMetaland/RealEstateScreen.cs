@@ -306,7 +306,7 @@ namespace MyTimeAtMetaland
 
         private void button3_Click(object sender, EventArgs e)
         {
-            //kirala
+
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -316,7 +316,6 @@ namespace MyTimeAtMetaland
 
         private void button2_Click(object sender, EventArgs e)
         {
-            //satÄ±n al
             int fieldCount;
             using (NpgsqlCommand command = new NpgsqlCommand("SELECT COUNT(*) FROM field WHERE field_type = 'Field' AND field_owner_id = @userId", connection))
             {
@@ -451,7 +450,6 @@ namespace MyTimeAtMetaland
         }
         private void button7_Click(object sender, EventArgs e)
         {
-            //kur
 
             if (button4.BackColor == Color.Yellow && exButton.BackColor == Color.Yellow)
             {
@@ -580,7 +578,6 @@ namespace MyTimeAtMetaland
 
         private void button8_Click(object sender, EventArgs e)
         {
-            //sat
             if (exButton.BackColor == Color.Yellow)
             {
                 using (NpgsqlCommand command = new NpgsqlCommand("UPDATE field SET on_sale = @v2, sale_price = @v3 WHERE field_id = @v1", connection))
@@ -603,7 +600,6 @@ namespace MyTimeAtMetaland
 
         private void button9_Click(object sender, EventArgs e)
         {
-            //kirala
         }
     }
 }

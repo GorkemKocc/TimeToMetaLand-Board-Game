@@ -244,20 +244,17 @@ namespace MyTimeAtMetaland
 
         private void plot_Click(object sender, EventArgs e)
         {
-            // Tıklanan butonun text özelliğini al
             Button button = sender as Button;
             string buttonText = button.Text;
             connection.Open();
             query = new NpgsqlCommand("select field_type from field where field_id = @v1;", connection);
             query.Parameters.AddWithValue("@v1", int.Parse(button.Name));
             var field_type = query.ExecuteScalar();
-            //Type type = field_type.GetType();
             if (field_type.ToString() == "business")
             {
                 query = new NpgsqlCommand("SELECT business.business_type FROM field JOIN business ON @v1 = business.business_field_id;", connection);
                 query.Parameters.AddWithValue("@v1", int.Parse(button.Name));
                 field_type = query.ExecuteScalar();
-                //MessageBox.Show(field_type.ToString());
                 if (field_type.ToString() == "shop")
                 {
                     shopScreen.Visible = true;

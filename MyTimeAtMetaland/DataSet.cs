@@ -54,7 +54,6 @@ namespace MyTimeAtMetaland
             dataTable = new DataTable();
             adapter.Fill(dataTable);
 
-            // NpgsqlCommandBuilder commandBuilder = new NpgsqlCommandBuilder(adapter);
 
             if (dataTable.Rows.Count > 0)
             {

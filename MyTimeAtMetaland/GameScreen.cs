@@ -20,9 +20,6 @@ namespace MyTimeAtMetaland
         public Panel panel;
         public DataSet dataSet;
         public Game game;
-        /* public UserControl gameScreen, shopScreen, marketScreen, realEstateScreen;
-         public List<Button> land = new List<Button>();
-         public int gameSizeX, gameSizeY;*/
         NpgsqlConnection connection = new NpgsqlConnection("server=localHost; port=5432; Database=MetaLand; user Id=postgres;" +
             "password=admin ");
         NpgsqlDataReader reader;
@@ -46,7 +43,6 @@ namespace MyTimeAtMetaland
             panel = panel1 as Panel;
             users = ReadData();
             newUsers = ReadData();
-            //newUsers.Insert(0, null);
             show_player();
         }
 
@@ -176,7 +172,6 @@ namespace MyTimeAtMetaland
 
         private void button1_Click(object sender, EventArgs e)
         {
-            // tur
             if (newUsers.Count != 1)
                 newUsers.RemoveAt(0);
             show_player();
