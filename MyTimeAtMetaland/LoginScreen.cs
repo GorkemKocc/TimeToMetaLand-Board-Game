@@ -51,9 +51,10 @@ namespace MyTimeAtMetaland
         private void button2_Click(object sender, EventArgs e)
         {
             //play button
-            game.createMap();
+
             this.Visible = false;
             gameScreen.Visible = true;
+            game.createMap();
 
         }
 
