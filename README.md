@@ -3,7 +3,7 @@
 ## Login Screen
 ![image](https://github.com/GorkemKocc/TimeToMetaLand-Game/assets/118227992/2d3013f1-0bf3-4c9c-82d9-36f70e905969)
 
-## Game Table
+## Game Board
 ![image](https://github.com/GorkemKocc/TimeToMetaLand-Game/assets/118227992/43f439d8-ccc6-45c9-9b2c-92ae27bd1854)
 
 ## Grocery
