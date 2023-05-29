@@ -18,7 +18,7 @@ using System.Reflection.Emit;
 //using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 //using static System.Windows.Forms.VisualStyles.VisualStyleElement.ToolBar;
 
-namespace MyTimeAtMetaland
+namespace TimeToMetaLand
 {
     public partial class RealEstateScreen : UserControl
     {

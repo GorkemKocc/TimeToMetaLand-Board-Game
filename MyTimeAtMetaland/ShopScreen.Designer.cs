@@ -1,4 +1,4 @@
-﻿namespace MyTimeAtMetaland
+﻿namespace TimeToMetaLand
 {
     partial class ShopScreen
     {

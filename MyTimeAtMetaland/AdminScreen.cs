@@ -10,7 +10,7 @@ using System.Windows.Forms;
 using Npgsql;
 //using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
-namespace MyTimeAtMetaland
+namespace TimeToMetaLand
 {
     public partial class AdminScreen : UserControl
     {

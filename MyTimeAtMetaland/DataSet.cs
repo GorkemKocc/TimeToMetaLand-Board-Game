@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Npgsql;
 
-namespace MyTimeAtMetaland
+namespace TimeToMetaLand
 {
     public partial class DataSet : UserControl
     {

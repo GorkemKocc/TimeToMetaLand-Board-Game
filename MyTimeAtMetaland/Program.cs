@@ -1,4 +1,4 @@
-namespace MyTimeAtMetaland
+namespace TimeToMetaLand
 {
     internal static class Program
     {

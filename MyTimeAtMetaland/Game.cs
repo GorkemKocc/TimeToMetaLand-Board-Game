@@ -12,7 +12,7 @@ using Npgsql;
 //using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 
-namespace MyTimeAtMetaland
+namespace TimeToMetaLand
 {
     public class Game
     {

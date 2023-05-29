@@ -1,4 +1,4 @@
-namespace MyTimeAtMetaland
+namespace TimeToMetaLand
 {
     public partial class Form1 : Form
     {

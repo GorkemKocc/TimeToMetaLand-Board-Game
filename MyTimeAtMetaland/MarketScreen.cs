@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
-namespace MyTimeAtMetaland
+namespace TimeToMetaLand
 {
     public partial class MarketScreen : UserControl
     {
