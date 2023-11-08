@@ -1,7 +1,6 @@
 # TimeToMetaland Game
 
 ## Login Screen
-![Ekran görüntüsü 2023-05-28 202230](https://github.com/GorkemKocc/TimeToMetaLand-Board-Game/assets/118227992/ced1e121-7bdc-41d8-969f-448a261bb026)
 
 ## Game Board
 ![image](https://github.com/GorkemKocc/TimeToMetaLand-Game/assets/118227992/43f439d8-ccc6-45c9-9b2c-92ae27bd1854)
