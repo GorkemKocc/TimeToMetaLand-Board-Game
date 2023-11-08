@@ -4,7 +4,7 @@
 ![Ekran görüntüsü 2023-05-28 202230](https://github.com/GorkemKocc/TimeToMetaLand-Board-Game/assets/118227992/272f32ec-f7f8-436d-afd4-9fa10646d44f)
 
 ## Game Board
-![image](https://github.com/GorkemKocc/TimeToMetaLand-Game/assets/118227992/43f439d8-ccc6-45c9-9b2c-92ae27bd1854)
+![Ekran görüntüsü 2023-05-28 185555](https://github.com/GorkemKocc/TimeToMetaLand-Board-Game/assets/118227992/70e796a2-2174-40b6-8133-0c579a555a99)
 
 ## Grocery
 ![image](https://github.com/GorkemKocc/TimeToMetaLand-Game/assets/118227992/065e0599-ebb0-4fa2-b0cb-2e88dbf99e0d)
