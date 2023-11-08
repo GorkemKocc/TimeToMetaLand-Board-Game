@@ -10,7 +10,7 @@
 ![Ekran görüntüsü 2023-05-28 202448](https://github.com/GorkemKocc/TimeToMetaLand-Board-Game/assets/118227992/366c4da1-4068-4867-a5e7-8c6db3a21eb9)
 
 ## Shop
-![image](https://github.com/GorkemKocc/TimeToMetaLand-Game/assets/118227992/013392fb-2f2a-4e19-9b2c-c8d978ec6fd6)
+![Ekran görüntüsü 2023-05-28 202430](https://github.com/GorkemKocc/TimeToMetaLand-Board-Game/assets/118227992/b04313a4-3a35-42ae-b741-99b84996ac75)
 
 ## Real Estate
 ![image](https://github.com/GorkemKocc/TimeToMetaLand-Game/assets/118227992/a7e17cc7-6dd4-4ccb-9ce1-70a4d5835f7d)
